@@ -14,18 +14,20 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsetsGeometry.only(right: 20, left: 20, top: 50),
-        child: Column(
-          children: [
-            HomeScreenAppBar(),
-            const SizedBox(height: 32),
-            SearchBar2(),
-            const SizedBox(height: 32),
-            SliderBuilder(),
-            const SizedBox(height: 18),
-            SectionTitle(title: 'Categories'),
-            const SizedBox(height: 20),
-            SizedBox(height: 80, child: CategoryListBuilder()),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              HomeScreenAppBar(),
+              const SizedBox(height: 32),
+              SearchBar2(),
+              const SizedBox(height: 32),
+              SliderBuilder(),
+              const SizedBox(height: 18),
+              SectionTitle(title: 'Categories'),
+              const SizedBox(height: 20),
+              SizedBox(height: 80, child: CategoryListBuilder()),
+            ],
+          ),
         ),
       ),
     );
