@@ -7,7 +7,6 @@ class AppointmentDetailsHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -15,11 +14,10 @@ class AppointmentDetailsHeader extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 1. Doctor Profile Image
           ClipRRect(
             borderRadius: BorderRadius.circular(16.0),
             child: Image.asset(
-              'assets/images/Rectangle 35.png', // Replace with actual image asset or URL
+              'assets/images/Rectangle 35.png',
               width: 90,
               height: 100,
               fit: BoxFit.cover,
@@ -27,12 +25,10 @@ class AppointmentDetailsHeader extends StatelessWidget {
           ),
           const SizedBox(width: 16),
 
-          // 2. Info Content
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Top Row: Name and Action Icons
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -52,7 +48,7 @@ class AppointmentDetailsHeader extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             color: AppColors.primaryTeal.withValues(alpha: 0.8),
-                            // color: primaryTeal.withValues(alpha: 0.8),
+
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -80,7 +76,6 @@ class AppointmentDetailsHeader extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
 
-                // Bottom Row: Payment Label and Price
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
@@ -111,7 +106,6 @@ class AppointmentDetailsHeader extends StatelessWidget {
   }
 }
 
-// Helper method for the circular action buttons
 Widget _buildActionIcon(IconData icon, Color color) {
   return Container(
     padding: const EdgeInsets.all(8),
@@ -119,10 +113,6 @@ Widget _buildActionIcon(IconData icon, Color color) {
       color: color.withValues(alpha: 0.15),
       shape: BoxShape.circle,
     ),
-    child: Icon(
-      icon,
-      size: 18,
-      color: const Color(0xff334444), // Slightly darker for contrast
-    ),
+    child: Icon(icon, size: 18, color: const Color(0xff334444)),
   );
 }

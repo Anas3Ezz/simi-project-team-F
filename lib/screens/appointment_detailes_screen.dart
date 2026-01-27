@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/theme/text_styles.dart';
 import 'package:my_project/widgets/appointment_details_screen_header.dart';
 
 class AppointmentDetailesScreen extends StatelessWidget {
@@ -13,7 +14,19 @@ class AppointmentDetailesScreen extends StatelessWidget {
         title: Text('Appointment'),
         centerTitle: true,
       ),
-      body: SafeArea(child: Column(children: [AppointmentDetailsHeader()])),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              AppointmentDetailsHeader(),
+              SizedBox(height: 10),
+              Text('Details', style: AppTextStyles.heading1),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
