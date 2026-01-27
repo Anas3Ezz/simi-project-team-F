@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/theme/text_styles.dart';
 import 'package:my_project/widgets/appointment_details_screen_header.dart';
 import 'package:my_project/widgets/doctot_info_details.dart';
 import 'package:my_project/widgets/primary_button.dart';
@@ -15,7 +16,7 @@ class AppointmentDetailesScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0, // Clean look
-        title: const Text('Appointment'),
+        title: Text('Appointment', style: AppTextStyles.screenTitles),
         centerTitle: true,
       ),
       body: SafeArea(
