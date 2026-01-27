@@ -40,8 +40,8 @@ class HomeScreenAppBar extends StatelessWidget {
           children: [
             const Icon(Icons.notifications_none, size: 30),
             Positioned(
-              right: 0,
-              child: CircleAvatar(radius: 6, backgroundColor: Colors.red),
+              right: 3,
+              child: CircleAvatar(radius: 5, backgroundColor: Colors.red),
             ),
           ],
         ),
