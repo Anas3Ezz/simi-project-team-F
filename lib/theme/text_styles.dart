@@ -11,7 +11,7 @@ class AppTextStyles {
 
   // 2. Doctor Names / Section Headers ("Dr. Upul", "Categories")
   static const TextStyle heading2 = TextStyle(
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: FontWeight.bold,
     color: Colors.black,
   );
@@ -20,7 +20,7 @@ class AppTextStyles {
   static const TextStyle specialtyLabel = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w500, // Medium weight
-    color: Colors.white,
+    color: AppColors.secondaryTeal, // Using your secondaryTeal (0xFF82C4C1)
   );
 
   // 4. Primary Buttons ("Sign In", "Book an Appointment")
@@ -56,5 +56,12 @@ class AppTextStyles {
     fontWeight: FontWeight.normal,
     color: Color(0xFF4F4F4F), // Standard Gray for descriptions
     height: 1.4,
+  );
+
+  // 3. Category text
+  static const TextStyle category = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500, // Medium weight
+    color: AppColors.secondaryTeal, // Using your secondaryTeal (0xFF82C4C1)
   );
 }
