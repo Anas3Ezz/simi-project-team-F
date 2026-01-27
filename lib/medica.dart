@@ -5,6 +5,6 @@ class Medica extends StatelessWidget {
   const Medica({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: HomeScreen());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: HomeScreen());
   }
 }
