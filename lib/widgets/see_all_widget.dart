@@ -5,7 +5,7 @@ class SeeAllRowWidget extends StatelessWidget {
   const SeeAllRowWidget({
     super.key,
     required this.titleRow,
-    required this.seeAll,
+    this.seeAll = 'See All',
   });
   final String titleRow;
   final String seeAll;

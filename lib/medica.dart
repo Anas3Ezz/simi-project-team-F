@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/screens/home.dart';
+import 'package:my_project/screens/home_screen.dart';
 
 class Medica extends StatelessWidget {
   const Medica({super.key});

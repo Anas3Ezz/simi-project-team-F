@@ -34,17 +34,14 @@ class AppointmentDetailesScreen extends StatelessWidget {
                     const SizedBox(height: 25),
                     const DoctorInfoDetails(),
                     const SizedBox(height: 25),
-                    const SeeAllRowWidget(
-                      titleRow: 'Working Hours',
-                      seeAll: 'See All',
-                    ),
+                    const SeeAllRowWidget(titleRow: 'Working Hours'),
                     const SizedBox(height: 15),
                     const SelectionSlotPicker(
                       items: ['10.00 AM', '11.00 AM', '12.00 PM', '01.00 PM'],
                       initialSelected: '11.00 AM',
                     ),
                     const SizedBox(height: 25),
-                    const SeeAllRowWidget(titleRow: 'Date', seeAll: 'See All'),
+                    const SeeAllRowWidget(titleRow: 'Date'),
                     const SizedBox(height: 15),
                     const SelectionSlotPicker(
                       items: ['Sun 4', 'Mon 5', 'Tue 6', 'Wed 7'],
