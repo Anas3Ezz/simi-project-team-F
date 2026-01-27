@@ -19,6 +19,7 @@ class HomeScreen extends StatelessWidget {
             SearchBar2(),
             const SizedBox(height: 32),
             SliderBuilder(),
+            const SizedBox(height: 18),
           ],
         ),
       ),
