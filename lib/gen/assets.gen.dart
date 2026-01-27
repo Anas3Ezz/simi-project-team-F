@@ -11,38 +11,47 @@
 
 import 'package:flutter/widgets.dart';
 
-class $AssetsDoctorsImagesGen {
-  const $AssetsDoctorsImagesGen();
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
 
-  /// File path: assets/doctors_images/doctor1.png
-  AssetGenImage get doctor1 =>
-      const AssetGenImage('assets/doctors_images/doctor1.png');
+  /// File path: assets/images/Rectangle 35.png
+  AssetGenImage get rectangle35Png =>
+      const AssetGenImage('assets/images/Rectangle 35.png');
 
-  /// File path: assets/doctors_images/doctor2.png
-  AssetGenImage get doctor2 =>
-      const AssetGenImage('assets/doctors_images/doctor2.png');
+  /// File path: assets/images/Rectangle 35.svg
+  String get rectangle35Svg => 'assets/images/Rectangle 35.svg';
 
-  /// File path: assets/doctors_images/doctor3.png
-  AssetGenImage get doctor3 =>
-      const AssetGenImage('assets/doctors_images/doctor3.png');
+  /// File path: assets/images/doctor1.png
+  AssetGenImage get doctor1 => const AssetGenImage('assets/images/doctor1.png');
 
-  /// File path: assets/doctors_images/doctor4.png
-  AssetGenImage get doctor4 =>
-      const AssetGenImage('assets/doctors_images/doctor4.png');
+  /// File path: assets/images/doctor2.png
+  AssetGenImage get doctor2 => const AssetGenImage('assets/images/doctor2.png');
+
+  /// File path: assets/images/doctor3.png
+  AssetGenImage get doctor3 => const AssetGenImage('assets/images/doctor3.png');
+
+  /// File path: assets/images/doctor4.png
+  AssetGenImage get doctor4 => const AssetGenImage('assets/images/doctor4.png');
+
+  /// File path: assets/images/user.jpg
+  AssetGenImage get user => const AssetGenImage('assets/images/user.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [doctor1, doctor2, doctor3, doctor4];
+  List<dynamic> get values => [
+    rectangle35Png,
+    rectangle35Svg,
+    doctor1,
+    doctor2,
+    doctor3,
+    doctor4,
+    user,
+  ];
 }
 
 class Assets {
   const Assets._();
 
-  static const $AssetsDoctorsImagesGen doctorsImages =
-      $AssetsDoctorsImagesGen();
-  static const AssetGenImage user = AssetGenImage('assets/user.jpg');
-
-  /// List of all assets
-  static List<AssetGenImage> get values => [user];
+  static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
 class AssetGenImage {

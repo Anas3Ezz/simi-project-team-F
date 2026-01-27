@@ -24,26 +24,23 @@ class SliderItem extends StatelessWidget {
                 Container(
                   width: 200,
                   margin: const EdgeInsetsGeometry.only(left: 150),
-                  child: Image.asset(Assets.doctorsImages.doctor2.path),
+                  child: Image.asset(Assets.images.doctor2.path),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Medical Center",
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 150,
                       child: Text(
-                        style: const TextStyle(
-                          fontSize: 11,
-                          color: Colors.white,
-                        ),
+                        style: TextStyle(fontSize: 11, color: Colors.white),
                         "orem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit ,",
                       ),
                     ),

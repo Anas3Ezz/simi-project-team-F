@@ -15,7 +15,7 @@ class CategoryWidget extends StatelessWidget {
         color: AppColors.secondaryTeal,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Text(category, style: AppTextStyles.specialtyLabel),
+      child: Text(category, style: AppTextStyles.category),
     );
   }
 }
