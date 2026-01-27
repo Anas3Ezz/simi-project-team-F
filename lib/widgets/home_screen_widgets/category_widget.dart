@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/theme/app_colors.dart';
+import 'package:my_project/theme/text_styles.dart';
 
 class CategoryWidget extends StatelessWidget {
   final String category;
@@ -10,17 +12,10 @@ class CategoryWidget extends StatelessWidget {
       padding: EdgeInsetsDirectional.symmetric(horizontal: 29, vertical: 25),
       height: 80,
       decoration: BoxDecoration(
-        color: Color(0xff7BC1B7),
+        color: AppColors.secondaryTeal,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Text(
-        category,
-        style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.w600,
-          color: Colors.white,
-        ),
-      ),
+      child: Text(category, style: AppTextStyles.specialtyLabel),
     );
   }
 }

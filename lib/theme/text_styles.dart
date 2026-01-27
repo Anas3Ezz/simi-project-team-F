@@ -11,16 +11,16 @@ class AppTextStyles {
 
   // 2. Doctor Names / Section Headers ("Dr. Upul", "Categories")
   static const TextStyle heading2 = TextStyle(
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: FontWeight.bold,
     color: Colors.black,
   );
 
   // 3. Specialty Labels ("Denteeth", "Therapist")
   static const TextStyle specialtyLabel = TextStyle(
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: FontWeight.w500, // Medium weight
-    color: AppColors.secondaryTeal, // Using your secondaryTeal (0xFF82C4C1)
+    color: Colors.white,
   );
 
   // 4. Primary Buttons ("Sign In", "Book an Appointment")

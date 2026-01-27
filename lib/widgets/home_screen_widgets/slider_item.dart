@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/theme/app_colors.dart';
 
 import '../../gen/assets.gen.dart';
 
@@ -11,7 +12,7 @@ class SliderItem extends StatelessWidget {
       padding: const EdgeInsetsGeometry.only(left: 15, right: 10, top: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        color: const Color(0xff0B8FAC),
+        color: AppColors.primaryTeal,
       ),
       height: 170,
       width: double.infinity,

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:my_project/theme/text_styles.dart';
 
 /**
  * This widget was repeated several times on other screens.
@@ -13,10 +14,7 @@ class SectionTitle extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 27),
-        ),
+        Text(title, style: AppTextStyles.heading2),
         GestureDetector(
           onTap: onTap,
           child: Text(

@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:my_project/theme/app_colors.dart';
 import 'package:my_project/widgets/home_screen_widgets/slider_item.dart';
 
 class SliderBuilder extends StatefulWidget {
@@ -47,7 +48,7 @@ class _SliderBuilderState extends State<SliderBuilder> {
                 CircleAvatar(
                   radius: _selectdIndex == i ? 7 : 5,
                   backgroundColor: _selectdIndex == i
-                      ? Color(0xff0B8FAC)
+                      ? AppColors.primaryTeal
                       : Color(0x66C4C4B2),
                 ),
                 SizedBox(width: 7),
