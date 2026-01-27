@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: 32),
               SliderBuilder(),
               const SizedBox(height: 18),
-              SectionTitle(title: 'Categories'),
+              SectionTitle(title: 'Categories '),
               const SizedBox(height: 20),
               SizedBox(height: 80, child: CategoryListBuilder()),
               const SizedBox(height: 20),
