@@ -25,7 +25,7 @@ class AppTextStyles {
 
   // 4. Primary Buttons ("Sign In", "Book an Appointment")
   static const TextStyle primaryButton = TextStyle(
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: FontWeight.bold,
     color: AppColors.white, // Using your white (0xFFFFFFFF)
   );
@@ -38,8 +38,8 @@ class AppTextStyles {
   );
 
   // 6. Highlighted Price ("$120.00" on the Appointment details)
-  static const TextStyle priceHighlight = TextStyle(
-    fontSize: 18,
+  static const TextStyle screenTitles = TextStyle(
+    fontSize: 26,
     fontWeight: FontWeight.bold,
     color: AppColors.primaryTeal, // Using your primaryTeal (0xFF0097B2)
   );
