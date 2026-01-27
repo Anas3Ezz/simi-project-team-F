@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/theme/text_styles.dart';
 import 'package:my_project/widgets/appointment_details_screen_header.dart';
+import 'package:my_project/widgets/doctot_info_details.dart';
+import 'package:my_project/widgets/primary_button.dart';
+import 'package:my_project/widgets/see_all_widget.dart';
+import 'package:my_project/widgets/selection_slot_picker.dart';
 
 class AppointmentDetailesScreen extends StatelessWidget {
   const AppointmentDetailesScreen({super.key});
@@ -11,20 +14,55 @@ class AppointmentDetailesScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('Appointment'),
+        elevation: 0, // Clean look
+        title: const Text('Appointment'),
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppointmentDetailsHeader(),
-              SizedBox(height: 10),
-              Text('Details', style: AppTextStyles.heading1),
-            ],
-          ),
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  spacing: 5,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const AppointmentDetailsHeader(),
+                    const SizedBox(height: 25),
+                    const DoctorInfoDetails(),
+                    const SizedBox(height: 25),
+                    const SeeAllRowWidget(
+                      titleRow: 'Working Hours',
+                      seeAll: 'See All',
+                    ),
+                    const SizedBox(height: 15),
+                    const SelectionSlotPicker(
+                      items: ['10.00 AM', '11.00 AM', '12.00 PM', '01.00 PM'],
+                      initialSelected: '11.00 AM',
+                    ),
+                    const SizedBox(height: 25),
+                    const SeeAllRowWidget(titleRow: 'Date', seeAll: 'See All'),
+                    const SizedBox(height: 15),
+                    const SelectionSlotPicker(
+                      items: ['Sun 4', 'Mon 5', 'Tue 6', 'Wed 7'],
+                      initialSelected: 'Sun 4',
+                    ),
+
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              child: PrimaryButton(
+                title: 'Book an Appointment',
+                onPressed: () {},
+              ),
+            ),
+          ],
         ),
       ),
     );

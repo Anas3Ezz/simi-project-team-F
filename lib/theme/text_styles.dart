@@ -25,7 +25,7 @@ class AppTextStyles {
 
   // 4. Primary Buttons ("Sign In", "Book an Appointment")
   static const TextStyle primaryButton = TextStyle(
-    fontSize: 16,
+    fontSize: 22,
     fontWeight: FontWeight.bold,
     color: AppColors.white, // Using your white (0xFFFFFFFF)
   );
