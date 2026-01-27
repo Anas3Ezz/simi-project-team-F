@@ -18,7 +18,7 @@ class AppTextStyles {
 
   // 3. Specialty Labels ("Denteeth", "Therapist")
   static const TextStyle specialtyLabel = TextStyle(
-    fontSize: 14,
+    fontSize: 20,
     fontWeight: FontWeight.w500, // Medium weight
     color: AppColors.secondaryTeal, // Using your secondaryTeal (0xFF82C4C1)
   );
@@ -50,9 +50,30 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: Colors.black,
   );
+  // 8. SubScreens's header(All Doctors ,Appointment)
+  static const TextStyle subTitles = TextStyle(
+    fontSize: 25,
+    fontWeight: FontWeight.w500, // Medium weight
+    color: AppColors.primaryTeal, // Using your secondaryTeal (0xFF82C4C1)
+  );
 
   static const TextStyle bodyText = TextStyle(
     fontSize: 14,
+    fontWeight: FontWeight.normal,
+    color: Color(0xFF4F4F4F), // Standard Gray for descriptions
+    height: 1.4,
+  );
+
+  //Category text
+  static const TextStyle category = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500, // Medium weight
+    color: AppColors.white, // Using your secondaryTeal (0xFF82C4C1)
+  );
+
+  // Doctor card description
+  static const TextStyle bodyText2 = TextStyle(
+    fontSize: 10,
     fontWeight: FontWeight.normal,
     color: Color(0xFF4F4F4F), // Standard Gray for descriptions
     height: 1.4,
