@@ -1,16 +1,24 @@
-# my_project
+# Medica - Modern Healthcare & Doctor Consultation UI
 
-A new Flutter project.
+#Appointment Screen
+<img width="1080" height="2400" alt="Screenshot_1769560640" src="https://github.com/user-attachments/assets/de9c9bc2-fb45-4399-8fc1-889db6b0e300" />
 
-## Getting Started
+#Messages Screen
+<img width="1080" height="2400" alt="Screenshot_1769560564" src="https://github.com/user-attachments/assets/ea85b94c-0fe0-43f0-bc1e-37935e31dce5" />
 
-This project is a starting point for a Flutter application.
+Medica is a comprehensive mobile UI solution designed to streamline the patient-doctor connection. From seamless onboarding to detailed doctor profiles, this project focuses on high-usability medical interfaces, emphasizing clean typography and intuitive user flows.
 
-A few resources to get you started if this is your first Flutter project:
+🚀 Features
+Secure Authentication: Integrated Sign-In and Sign-Up flows with support for Social Auth (Facebook/Google).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Dynamic Doctor Discovery: Searchable database of healthcare professionals with rating systems and specialty categories.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Smart Categorization: Filterable "Denteeth," "Therapist," and "Surgeon" modules for quick access.
+
+Appointment Booking: Optimized "Book Now" CTA workflow for instant scheduling.
+
+User-Centric Design: Personalized home screen with "Welcome Back" messaging and notification centers.
+
+🛠 Tech Stack
+Design Tool: Figma 
+Frontend Framework:  Flutter
