@@ -30,7 +30,7 @@ class DoctorCardFooter extends StatelessWidget {
         ),
         Row(
           children: [
-            const Icon(Icons.star, color: Color(0xffF89603)),
+            const Icon(Icons.star, color: AppColors.ratingGold),
             Text("$rate", style: TextStyle(fontWeight: FontWeight.bold)),
           ],
         ),

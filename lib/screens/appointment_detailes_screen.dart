@@ -13,7 +13,7 @@ class AppointmentDetailesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: SubScreensHeader(title: "Appointment"),
+      appBar: const SubScreensHeader(title: "Appointment"),
       body: SafeArea(
         child: Column(
           children: [
