@@ -18,7 +18,7 @@ class _DoctorCardHeaderState extends State<DoctorCardHeader> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(widget.name, style: AppTextStyles.heading2),
+        Text("Dr.${widget.name}", style: AppTextStyles.heading2),
         GestureDetector(
           child: Icon(
             favorite ? Icons.favorite : Icons.favorite_border,

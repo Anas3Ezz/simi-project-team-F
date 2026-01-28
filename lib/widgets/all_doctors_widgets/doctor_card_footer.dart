@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../screens/appointment_detailes_screen.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/text_styles.dart';
 
@@ -17,7 +18,14 @@ class DoctorCardFooter extends StatelessWidget {
             elevation: 0,
             backgroundColor: AppColors.primaryTeal,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AppointmentDetailesScreen(),
+              ),
+            );
+          },
           child: const Text("Book", style: AppTextStyles.primaryButton),
         ),
         Row(

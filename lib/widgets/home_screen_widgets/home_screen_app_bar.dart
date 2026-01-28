@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../gen/assets.gen.dart';
-
 class HomeScreenAppBar extends StatelessWidget {
   const HomeScreenAppBar({super.key});
 
@@ -14,7 +12,7 @@ class HomeScreenAppBar extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 25,
-              backgroundImage: Image.asset(Assets.images.user.path).image,
+              backgroundImage: Image.asset("assets/images/user.jpg").image,
             ),
             const SizedBox(width: 10),
             Column(

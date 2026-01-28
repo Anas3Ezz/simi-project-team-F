@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/theme/text_styles.dart';
 import 'package:my_project/widgets/appointment_details_screen_header.dart';
 import 'package:my_project/widgets/doctot_info_details.dart';
 import 'package:my_project/widgets/primary_button.dart';
-import 'package:my_project/widgets/see_all_widget.dart';
+import 'package:my_project/widgets/section_title_widget.dart';
 import 'package:my_project/widgets/selection_slot_picker.dart';
+import 'package:my_project/widgets/sub_screens_app_bar.dart';
 
 class AppointmentDetailesScreen extends StatelessWidget {
   const AppointmentDetailesScreen({super.key});
@@ -13,12 +13,7 @@ class AppointmentDetailesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0, // Clean look
-        title: Text('Appointment', style: AppTextStyles.screenTitles),
-        centerTitle: true,
-      ),
+      appBar: SubScreensHeader(title: "Appointment"),
       body: SafeArea(
         child: Column(
           children: [
@@ -34,17 +29,14 @@ class AppointmentDetailesScreen extends StatelessWidget {
                     const SizedBox(height: 25),
                     const DoctorInfoDetails(),
                     const SizedBox(height: 25),
-                    const SeeAllRowWidget(
-                      titleRow: 'Working Hours',
-                      seeAll: 'See All',
-                    ),
+                    const SectionTitle(title: 'Working Hours'),
                     const SizedBox(height: 15),
                     const SelectionSlotPicker(
                       items: ['10.00 AM', '11.00 AM', '12.00 PM', '01.00 PM'],
                       initialSelected: '11.00 AM',
                     ),
                     const SizedBox(height: 25),
-                    const SeeAllRowWidget(titleRow: 'Date', seeAll: 'See All'),
+                    const SectionTitle(title: 'Date'),
                     const SizedBox(height: 15),
                     const SelectionSlotPicker(
                       items: ['Sun 4', 'Mon 5', 'Tue 6', 'Wed 7'],
