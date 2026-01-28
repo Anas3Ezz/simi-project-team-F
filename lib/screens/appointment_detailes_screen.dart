@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/theme/text_styles.dart';
-import 'package:my_project/widgets/appointment_details_screen_header.dart';
-import 'package:my_project/widgets/doctot_info_details.dart';
+import 'package:my_project/widgets/appointment_details_screen_widget/appointment_details_screen_header.dart';
+import 'package:my_project/widgets/appointment_details_screen_widget/doctot_info_details.dart';
+import 'package:my_project/widgets/appointment_details_screen_widget/selection_slot_picker.dart';
 import 'package:my_project/widgets/primary_button.dart';
 import 'package:my_project/widgets/see_all_widget.dart';
-import 'package:my_project/widgets/selection_slot_picker.dart';
 
 class AppointmentDetailesScreen extends StatelessWidget {
   const AppointmentDetailesScreen({super.key});
