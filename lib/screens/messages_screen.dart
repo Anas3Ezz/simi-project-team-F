@@ -12,51 +12,155 @@ class MessagesScreen extends StatefulWidget {
 
 class _MessagesScreenState extends State<MessagesScreen> {
   int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0, // Clean look
-        title: Text('Message', style: AppTextStyles.screenTitles),
-        centerTitle: true,
-      ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              SearchBarWidget(),
-              SizedBox(height: 15),
-              SeeAllRowWidget(titleRow: 'Active Now', seeAll: ''),
-              SizedBox(height: 15),
-              SizedBox(
-                height: 80,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return DoctorAvatar(
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = index; // Update state and rebuild
-                        });
-                      },
-                      image: 'assets/images/Rectangle 35.png',
-                      isOnline: true,
-                      isSelected: selectedIndex == index,
-                    );
-                  },
-                ),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              floating: true,
+              backgroundColor: Colors.white,
+              title: Text('Message', style: AppTextStyles.screenTitles),
+              centerTitle: true,
+            ),
+            const SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              sliver: SliverToBoxAdapter(child: SearchBarWidget()),
+            ),
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: SeeAllRowWidget(titleRow: 'Active Now', seeAll: ''),
+                  ),
+                  const SizedBox(height: 12),
+                  _buildHorizontalList(),
+                  const SizedBox(height: 24),
+                ],
               ),
-              SizedBox(height: 15),
+            ),
+            const SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              sliver: SliverToBoxAdapter(
+                child: SeeAllRowWidget(titleRow: 'Messages', seeAll: ''),
+              ),
+            ),
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              sliver: SliverList.builder(
+                itemCount: 20,
+                itemBuilder: (context, index) {
+                  return DoctorMessageTile(
+                    name: 'Dr. Expert $index',
+                    message: 'Performance is much better now!',
+                    image: 'assets/images/Rectangle 35.png',
+                    time: '12:50',
+                    unreadCount: index == 0 ? 2 : 0,
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
-              SeeAllRowWidget(titleRow: 'Messages', seeAll: ''),
+  Widget _buildHorizontalList() {
+    return SizedBox(
+      height: 80,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return DoctorAvatar(
+            image: 'assets/images/Rectangle 35.png',
+            isOnline: true,
+            isSelected: selectedIndex == index,
+            onTap: () => setState(() => selectedIndex = index),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class DoctorMessageTile extends StatelessWidget {
+  final String name;
+  final String message;
+  final String image;
+  final String time;
+  final int? unreadCount;
+
+  const DoctorMessageTile({
+    super.key,
+    required this.name,
+    required this.message,
+    required this.image,
+    required this.time,
+    this.unreadCount,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: const Color(0xFFF4F9F9), // Light mint background from image
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          CircleAvatar(radius: 30, backgroundImage: AssetImage(image)),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  name,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+                Text(
+                  message,
+                  style: const TextStyle(color: Colors.grey, fontSize: 13),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                time,
+                style: const TextStyle(color: Colors.grey, fontSize: 12),
+              ),
+              const SizedBox(height: 8),
+              if (unreadCount != null && unreadCount! > 0)
+                CircleAvatar(
+                  radius: 10,
+                  backgroundColor: const Color(
+                    0xFF1B9AAA,
+                  ), // Teal color from image
+                  child: Text(
+                    unreadCount.toString(),
+                    style: const TextStyle(color: Colors.white, fontSize: 10),
+                  ),
+                ),
             ],
           ),
-        ),
+        ],
       ),
     );
   }
