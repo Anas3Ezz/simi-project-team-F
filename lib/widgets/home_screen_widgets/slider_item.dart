@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/theme/app_colors.dart';
 
-import '../../gen/assets.gen.dart';
-
 class SliderItem extends StatelessWidget {
   const SliderItem({super.key});
 
@@ -24,7 +22,7 @@ class SliderItem extends StatelessWidget {
                 Container(
                   width: 200,
                   margin: const EdgeInsetsGeometry.only(left: 150),
-                  child: Image.asset(Assets.images.doctor2.path),
+                  child: Image.asset("assets/images/doctor2.png"),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
