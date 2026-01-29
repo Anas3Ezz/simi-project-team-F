@@ -4,6 +4,7 @@ import 'package:my_project/screens/home_screen.dart';
 import 'package:my_project/theme/app_colors.dart';
 
 import 'appointment_detailes_screen.dart';
+import 'messages_screen.dart';
 
 class Root extends StatefulWidget {
   const Root({super.key});
@@ -18,10 +19,7 @@ class _RootState extends State<Root> {
   List<NavItemModel> icons = [
     NavItemModel(icon: Icons.home_outlined, screen: HomeScreen()),
     NavItemModel(icon: Icons.access_time, screen: AppointmentDetailesScreen()),
-    NavItemModel(
-      icon: Icons.chat_outlined,
-      screen: AppointmentDetailesScreen(),
-    ),
+    NavItemModel(icon: Icons.chat_outlined, screen: MessagesScreen()),
     NavItemModel(icon: Icons.perm_identity_rounded, screen: HomeScreen()),
   ];
 
