@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/theme/text_styles.dart';
 import 'package:my_project/widgets/Messages_screen_widgets/doctor_message_tile.dart';
-import 'package:my_project/widgets/messages_screen_widgets/doctor_avatar.dart';
+import 'package:my_project/widgets/messages_screen_widgets/active_doctors_list_widget.dart';
 import 'package:my_project/widgets/search_bar_widget.dart';
 import 'package:my_project/widgets/see_all_widget.dart';
 
@@ -40,23 +40,13 @@ class _MessagesScreenState extends State<MessagesScreen> {
                     child: SeeAllRowWidget(titleRow: 'Active Now', seeAll: ''),
                   ),
                   const SizedBox(height: 12),
-                  SizedBox(
-                    height: 80,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        return DoctorAvatar(
-                          image: 'assets/images/Rectangle 35.png',
-                          isOnline: true,
-                          isSelected: selectedIndex == index,
-                          onTap: () => setState(() => selectedIndex = index),
-                        );
-                      },
-                    ),
+                  ActiveDoctorsList(
+                    selectedIndex: selectedIndex,
+                    onDoctorSelected: (index) {
+                      setState(() => selectedIndex = index);
+                    },
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),

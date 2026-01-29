@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/screens/appointment_detailes_screen.dart';
+import 'package:my_project/screens/messages_screen.dart';
 
 class Medica extends StatelessWidget {
   const Medica({super.key});
@@ -7,7 +7,7 @@ class Medica extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AppointmentDetailesScreen(),
+      home: MessagesScreen(),
     );
   }
 }
