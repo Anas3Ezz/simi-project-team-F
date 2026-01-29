@@ -4,8 +4,8 @@ import 'package:my_project/models/doctor_model.dart';
 import 'doctor_card_widget.dart';
 
 class DoctorsListBuilder extends StatelessWidget {
-  DoctorsListBuilder({super.key});
-  List<DoctorModel> doctors = [
+  const DoctorsListBuilder({super.key});
+  static List<DoctorModel> doctors = [
     DoctorModel(
       name: "Wanitha",
       img: "assets/images/doctor1.png",
@@ -54,7 +54,6 @@ class DoctorsListBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverList.separated(
       itemBuilder: (context, i) => DoctorCardWidget(doctor: doctors[i]),
-
       separatorBuilder: (context, i) {
         return const SizedBox(height: 15);
       },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/models/nav_item_model.dart';
 import 'package:my_project/screens/all_doctors_screen.dart';
-import 'package:my_project/screens/home.dart';
+import 'package:my_project/screens/home_screen.dart';
 import 'package:my_project/theme/app_colors.dart';
 
 import '../../screens/appointment_detailes_screen.dart';
