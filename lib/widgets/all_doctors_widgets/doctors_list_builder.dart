@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:my_project/models/doctor_model.dart';
 
-import '../../gen/assets.gen.dart';
 import 'doctor_card_widget.dart';
 
 class DoctorsListBuilder extends StatelessWidget {
@@ -9,45 +8,45 @@ class DoctorsListBuilder extends StatelessWidget {
   static List<DoctorModel> doctors = [
     DoctorModel(
       name: "Wanitha",
-      img: Assets.images.doctor1.path,
+      img: "assets/images/doctor1.png",
       rate: 5,
       specialist: "denteeth",
     ),
     DoctorModel(
       name: "Sara",
-      img: Assets.images.doctor2.path,
+      img: "assets/images/doctor2.png",
       rate: 4,
       specialist: "Theripist",
     ),
     DoctorModel(
       name: "Pawan",
-      img: Assets.images.doctor3.path,
+      img: "assets/images/doctor3.png",
       rate: 4,
       specialist: "denteeth",
     ),
     DoctorModel(
       name: "Udara",
-      img: Assets.images.doctor4.path,
+      img: "assets/images/doctor4.png",
       rate: 4,
       specialist: "Theripist",
     ),
     DoctorModel(
       name: "Udara",
-      img: Assets.images.doctor4.path,
+      img: "assets/images/doctor4.png",
       rate: 4,
       specialist: "Theripist",
     ),
     DoctorModel(
       name: "Pawan",
-      img: Assets.images.doctor3.path,
+      img: "assets/images/doctor3.png",
       rate: 4,
       specialist: "denteeth",
     ),
     DoctorModel(
       name: "Wanitha",
-      img: Assets.images.doctor1.path,
+      img: "assets/images/doctor1.png",
       rate: 5,
-      specialist: "denteeth",
+      specialist: "denteeth.png",
     ),
   ];
 

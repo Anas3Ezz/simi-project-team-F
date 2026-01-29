@@ -3,7 +3,7 @@ import 'package:my_project/theme/text_styles.dart';
 import 'package:my_project/widgets/Messages_screen_widgets/doctor_message_tile.dart';
 import 'package:my_project/widgets/messages_screen_widgets/active_doctors_list_widget.dart';
 import 'package:my_project/widgets/search_bar_widget.dart';
-import 'package:my_project/widgets/see_all_widget.dart';
+import 'package:my_project/widgets/section_title_widget.dart';
 
 class MessagesScreen extends StatefulWidget {
   const MessagesScreen({super.key});
@@ -37,7 +37,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
                 children: [
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16.0),
-                    child: SeeAllRowWidget(titleRow: 'Active Now', seeAll: ''),
+                    child: SectionTitle(title: 'Active Now', seeAll: ''),
                   ),
                   const SizedBox(height: 12),
                   ActiveDoctorsList(
@@ -53,7 +53,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
             const SliverPadding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               sliver: SliverToBoxAdapter(
-                child: SeeAllRowWidget(titleRow: 'Messages', seeAll: ''),
+                child: SectionTitle(title: 'Messages', seeAll: ''),
               ),
             ),
             SliverPadding(
