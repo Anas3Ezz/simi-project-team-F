@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_project/models/nav_item_model.dart';
 import 'package:my_project/screens/all_doctors_screen.dart';
 import 'package:my_project/screens/home_screen.dart';
+import 'package:my_project/screens/messages_screen.dart';
 import 'package:my_project/theme/app_colors.dart';
-
-import '../../screens/appointment_detailes_screen.dart';
 
 class NavBarBuilder extends StatefulWidget {
   const NavBarBuilder({super.key});
@@ -21,10 +20,7 @@ class _NavBarBuilderState extends State<NavBarBuilder> {
   List<NavItemModel> icons = [
     NavItemModel(icon: Icons.home_outlined, screen: HomeScreen()),
     NavItemModel(icon: Icons.access_time, screen: AllDoctorsScreen()),
-    NavItemModel(
-      icon: Icons.chat_outlined,
-      screen: AppointmentDetailesScreen(),
-    ),
+    NavItemModel(icon: Icons.chat_outlined, screen: MessagesScreen()),
     NavItemModel(icon: Icons.perm_identity_rounded, screen: HomeScreen()),
   ];
 
