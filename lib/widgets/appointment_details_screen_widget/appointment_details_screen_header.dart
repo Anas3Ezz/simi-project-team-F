@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/theme/app_colors.dart';
 
+import '../../models/doctor_model.dart';
+
 class AppointmentDetailsHeader extends StatelessWidget {
-  const AppointmentDetailsHeader({super.key});
+  final DoctorModel doctor;
+  const AppointmentDetailsHeader({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +19,7 @@ class AppointmentDetailsHeader extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16.0),
-            child: Image.asset(
-              'assets/images/Rectangle 35.png',
-              width: 90,
-              height: 100,
-              fit: BoxFit.cover,
-            ),
+            child: Image.asset(doctor.img, width: 90, fit: BoxFit.cover),
           ),
           const SizedBox(width: 16),
 
@@ -35,16 +33,16 @@ class AppointmentDetailsHeader extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Dr.Upul',
-                          style: TextStyle(
-                            fontSize: 22,
+                        Text(
+                          'Dr.${doctor.name}',
+                          style: const TextStyle(
+                            fontSize: 19,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                           ),
                         ),
                         Text(
-                          'Denteeth',
+                          doctor.specialist,
                           style: TextStyle(
                             fontSize: 16,
                             color: AppColors.primaryTeal.withValues(alpha: 0.8),
@@ -113,6 +111,6 @@ Widget _buildActionIcon(IconData icon, Color color) {
       color: color.withValues(alpha: 0.15),
       shape: BoxShape.circle,
     ),
-    child: Icon(icon, size: 18, color: const Color(0xff334444)),
+    child: Icon(icon, size: 16, color: const Color(0xff334444)),
   );
 }
