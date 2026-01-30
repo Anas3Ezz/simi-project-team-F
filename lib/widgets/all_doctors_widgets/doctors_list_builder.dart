@@ -46,7 +46,7 @@ class DoctorsListBuilder extends StatelessWidget {
       name: "Wanitha",
       img: "assets/images/doctor1.png",
       rate: 5,
-      specialist: "denteeth.png",
+      specialist: "denteeth",
     ),
   ];
 
