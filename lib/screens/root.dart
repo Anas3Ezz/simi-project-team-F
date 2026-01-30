@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/models/nav_item_model.dart';
 import 'package:my_project/screens/home_screen.dart';
+import 'package:my_project/screens/messages_screen.dart';
 import 'package:my_project/theme/app_colors.dart';
-
-import 'messages_screen.dart';
 
 class Root extends StatefulWidget {
   const Root({super.key});
@@ -13,43 +11,81 @@ class Root extends StatefulWidget {
 }
 
 class _RootState extends State<Root> {
-  int selectedIcon = 0;
+  int _selectedIndex = 0;
 
-  List<NavItemModel> icons = [
-    NavItemModel(icon: Icons.home_outlined, screen: HomeScreen()),
-    NavItemModel(icon: Icons.access_time, screen: HomeScreen()),
-    NavItemModel(icon: Icons.chat_outlined, screen: MessagesScreen()),
-    NavItemModel(icon: Icons.perm_identity_rounded, screen: HomeScreen()),
+  // 1. Keep screens in a list.
+  // We use these in IndexedStack to keep their state alive.
+  final List<Widget> _screens = const [
+    HomeScreen(),
+    HomeScreen(), // Replace with your AllDoctorsScreen
+    MessagesScreen(),
+    HomeScreen(), // Replace with your ProfileScreen
+  ];
+
+  // 2. Separate the icon data from the Widgets for better readability
+  final List<IconData> _navIcons = const [
+    Icons.home_outlined,
+    Icons.access_time,
+    Icons.chat_outlined,
+    Icons.perm_identity_rounded,
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: icons[selectedIcon].screen,
+      backgroundColor: AppColors.white,
+      body: IndexedStack(index: _selectedIndex, children: _screens),
       bottomNavigationBar: BottomAppBar(
         color: AppColors.white,
-        height: 70,
+        height: 80,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(icons.length, (i) {
-            return GestureDetector(
-              child: selectedIcon == i
-                  ? Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: AppColors.primaryTeal,
-                      ),
-                      child: Icon(icons[i].icon, color: AppColors.white),
-                    )
-                  : SizedBox(width: 50, height: 50, child: Icon(icons[i].icon)),
+          children: List.generate(_navIcons.length, (index) {
+            return CustomNavItem(
+              icon: _navIcons[index],
+              isSelected: _selectedIndex == index,
               onTap: () {
-                selectedIcon = i;
-                setState(() {});
+                setState(() {
+                  _selectedIndex = index;
+                });
               },
             );
           }),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomNavItem extends StatelessWidget {
+  final IconData icon;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const CustomNavItem({
+    super.key,
+    required this.icon,
+    required this.isSelected,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeInOut,
+        width: 50,
+        height: 50,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: isSelected ? AppColors.primaryTeal : Colors.transparent,
+        ),
+        child: Icon(
+          icon,
+          color: isSelected ? Colors.white : Colors.grey,
+          size: 28,
         ),
       ),
     );
