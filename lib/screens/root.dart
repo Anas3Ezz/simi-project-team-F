@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/models/nav_item_model.dart';
 import 'package:my_project/screens/home_screen.dart';
 import 'package:my_project/screens/messages_screen.dart';
 import 'package:my_project/theme/app_colors.dart';
@@ -13,33 +14,29 @@ class Root extends StatefulWidget {
 
 class _RootState extends State<Root> {
   int _selectedIndex = 0;
-  final List<Widget> _screens = const [
-    HomeScreen(),
-    HomeScreen(),
-    MessagesScreen(),
-    HomeScreen(),
-  ];
 
-  final List<IconData> _navIcons = const [
-    Icons.home_outlined,
-    Icons.access_time,
-    Icons.chat_outlined,
-    Icons.perm_identity_rounded,
+  final List<NavItemModel> _screensList = [
+    const NavItemModel(icon: Icons.home_outlined, screen: HomeScreen()),
+    const NavItemModel(icon: Icons.access_time, screen: HomeScreen()),
+    const NavItemModel(icon: Icons.chat_outlined, screen: MessagesScreen()),
+    const NavItemModel(icon: Icons.perm_identity_rounded, screen: HomeScreen()),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: IndexedStack(index: _selectedIndex, children: _screens),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _screensList.map((item) => item.screen).toList(),
+      ),
       bottomNavigationBar: BottomAppBar(
         color: AppColors.white,
         height: 80,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: List.generate(_navIcons.length, (index) {
+          children: List.generate(_screensList.length, (index) {
             return CustomNavItem(
-              icon: _navIcons[index],
+              icon: _screensList[index].icon,
               isSelected: _selectedIndex == index,
               onTap: () {
                 setState(() {
