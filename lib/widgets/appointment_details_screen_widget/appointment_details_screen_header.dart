@@ -29,7 +29,6 @@ class AppointmentDetailsHeader extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Doctor Info
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -51,34 +50,27 @@ class AppointmentDetailsHeader extends StatelessWidget {
                         ),
                       ],
                     ),
-
-                    // Action Icons Section
                     Row(
                       children: [
                         HeaderActionIcon(
                           icon: Icons.chat_bubble_outline,
                           color: AppColors.primaryTeal,
-                          onTap: () => print("Chat Pressed"),
                         ),
                         const SizedBox(width: 8),
                         HeaderActionIcon(
                           icon: Icons.phone_outlined,
                           color: AppColors.primaryTeal,
-                          onTap: () => print("Call Pressed"),
                         ),
                         const SizedBox(width: 8),
                         HeaderActionIcon(
                           icon: Icons.videocam_outlined,
                           color: AppColors.primaryTeal,
-                          onTap: () => print("Video Pressed"),
                         ),
                       ],
                     ),
                   ],
                 ),
                 const SizedBox(height: 24),
-
-                // Payment Row
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
