@@ -22,7 +22,7 @@ class DoctorMessageTile extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: const Color(0xFFF4F9F9), // Light mint background from image
+        color: const Color(0xFFF4F9F9),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -60,9 +60,7 @@ class DoctorMessageTile extends StatelessWidget {
               if (unreadCount != null && unreadCount! > 0)
                 CircleAvatar(
                   radius: 10,
-                  backgroundColor: const Color(
-                    0xFF1B9AAA,
-                  ), // Teal color from image
+                  backgroundColor: const Color(0xFF1B9AAA),
                   child: Text(
                     unreadCount.toString(),
                     style: const TextStyle(color: Colors.white, fontSize: 10),

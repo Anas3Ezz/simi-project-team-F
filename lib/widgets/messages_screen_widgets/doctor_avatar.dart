@@ -4,12 +4,12 @@ class DoctorAvatar extends StatelessWidget {
   final String image;
   final bool isOnline;
   final bool isSelected;
-  final VoidCallback onTap; // Add this callback
+  final VoidCallback onTap;
 
   const DoctorAvatar({
     super.key,
     required this.image,
-    required this.onTap, // Make it required
+    required this.onTap,
     this.isOnline = false,
     this.isSelected = false,
   });
@@ -17,7 +17,7 @@ class DoctorAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap, // Trigger the selection logic
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Stack(
@@ -33,9 +33,7 @@ class DoctorAvatar extends StatelessWidget {
               ),
               child: CircleAvatar(
                 radius: 30,
-                backgroundImage: AssetImage(
-                  image,
-                ), // Using AssetImage directly is cleaner
+                backgroundImage: AssetImage(image),
               ),
             ),
             if (isOnline)

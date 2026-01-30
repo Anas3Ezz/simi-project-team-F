@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/models/doctor_model.dart';
 import 'package:my_project/theme/app_colors.dart';
-
-import '../../models/doctor_model.dart';
+import 'package:my_project/widgets/appointment_details_screen_widget/header_action_icon.dart';
 
 class AppointmentDetailsHeader extends StatelessWidget {
   final DoctorModel doctor;
@@ -22,7 +22,6 @@ class AppointmentDetailsHeader extends StatelessWidget {
             child: Image.asset(doctor.img, width: 90, fit: BoxFit.cover),
           ),
           const SizedBox(width: 16),
-
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,7 +45,6 @@ class AppointmentDetailsHeader extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             color: AppColors.primaryTeal.withValues(alpha: 0.8),
-
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -54,30 +52,29 @@ class AppointmentDetailsHeader extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        _buildActionIcon(
-                          Icons.chat_bubble_outline,
-                          AppColors.primaryTeal,
+                        HeaderActionIcon(
+                          icon: Icons.chat_bubble_outline,
+                          color: AppColors.primaryTeal,
                         ),
                         const SizedBox(width: 8),
-                        _buildActionIcon(
-                          Icons.phone_outlined,
-                          AppColors.primaryTeal,
+                        HeaderActionIcon(
+                          icon: Icons.phone_outlined,
+                          color: AppColors.primaryTeal,
                         ),
                         const SizedBox(width: 8),
-                        _buildActionIcon(
-                          Icons.videocam_outlined,
-                          AppColors.primaryTeal,
+                        HeaderActionIcon(
+                          icon: Icons.videocam_outlined,
+                          color: AppColors.primaryTeal,
                         ),
                       ],
                     ),
                   ],
                 ),
                 const SizedBox(height: 24),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'Payment',
                       style: TextStyle(
                         fontSize: 20,
@@ -102,15 +99,4 @@ class AppointmentDetailsHeader extends StatelessWidget {
       ),
     );
   }
-}
-
-Widget _buildActionIcon(IconData icon, Color color) {
-  return Container(
-    padding: const EdgeInsets.all(8),
-    decoration: BoxDecoration(
-      color: color.withValues(alpha: 0.15),
-      shape: BoxShape.circle,
-    ),
-    child: Icon(icon, size: 16, color: const Color(0xff334444)),
-  );
 }
