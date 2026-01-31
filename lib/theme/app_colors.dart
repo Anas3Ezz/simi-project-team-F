@@ -16,7 +16,8 @@ class AppColors {
   static const Color successGreen = Color(
     0xFF70B9BE,
   ); // Payment success checkmark
-  static const Color ratingGold = Color(0xFFFFB300); // Star icons for ratings
+  static const Color ratingGold = Color(0xFFFFB300);
+  static const Color textFormFieldColor = Color(0xFFD9D9D9);// Star icons for ratings
   static const Color white = Color(0xFFFFFFFF); // Screen backgrounds
   static const Color shadowColor = Color(
     0x1A000000,

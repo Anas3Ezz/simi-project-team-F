@@ -20,28 +20,28 @@ class AppTextStyles {
   static const TextStyle specialtyLabel = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w500, // Medium weight
-    color: AppColors.secondaryTeal,
+    color: AppColors.secondaryTeal, // Using your secondaryTeal (0xFF82C4C1)
   );
 
   // 4. Primary Buttons ("Sign In", "Book an Appointment")
   static const TextStyle primaryButton = TextStyle(
     fontSize: 22,
     fontWeight: FontWeight.bold,
-    color: AppColors.white,
+    color: AppColors.white, // Using your white (0xFFFFFFFF)
   );
 
   // 5. High-Emphasis Price ("$120.00" on the Payment screen)
   static const TextStyle priceLarge = TextStyle(
     fontSize: 32,
     fontWeight: FontWeight.bold,
-    color: AppColors.white,
+    color: AppColors.white, // White on the teal background
   );
 
   // 6. Highlighted Price ("$120.00" on the Appointment details)
   static const TextStyle screenTitles = TextStyle(
     fontSize: 26,
     fontWeight: FontWeight.bold,
-    color: AppColors.primaryTeal,
+    color: AppColors.primaryTeal, // Using your primaryTeal (0xFF0097B2)
   );
 
   // 7. Input Text & Form Labels ("Full Name", "Enter Your Email")
@@ -53,29 +53,29 @@ class AppTextStyles {
   // 8. SubScreens's header(All Doctors ,Appointment)
   static const TextStyle subTitles = TextStyle(
     fontSize: 25,
-    fontWeight: FontWeight.w500,
-    color: AppColors.primaryTeal,
+    fontWeight: FontWeight.w500, // Medium weight
+    color: AppColors.primaryTeal, // Using your secondaryTeal (0xFF82C4C1)
   );
 
   static const TextStyle bodyText = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
-    color: Color(0xFF4F4F4F),
+    color: Color(0xFF4F4F4F), // Standard Gray for descriptions
     height: 1.4,
   );
 
   //Category text
   static const TextStyle category = TextStyle(
     fontSize: 20,
-    fontWeight: FontWeight.w500,
-    color: AppColors.white,
+    fontWeight: FontWeight.w500, // Medium weight
+    color: AppColors.white, // Using your secondaryTeal (0xFF82C4C1)
   );
 
   // Doctor card description
   static const TextStyle bodyText2 = TextStyle(
     fontSize: 10,
     fontWeight: FontWeight.normal,
-    color: Color(0xFF4F4F4F),
+    color: Color(0xFF4F4F4F), // Standard Gray for descriptions
     height: 1.4,
   );
 }

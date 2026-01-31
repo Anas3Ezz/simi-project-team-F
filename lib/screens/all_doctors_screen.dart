@@ -6,6 +6,7 @@ import 'package:my_project/widgets/search_bar_widget.dart';
 import '../widgets/sub_screens_app_bar.dart';
 
 class AllDoctorsScreen extends StatelessWidget {
+
   const AllDoctorsScreen({super.key});
 
   @override
