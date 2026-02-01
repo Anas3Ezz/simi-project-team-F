@@ -29,7 +29,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      isMarked = !isMarked;
+                    });
+                  },
                   child: const Text(
                     "Mark All",
                     style: TextStyle(color: Colors.grey),
@@ -40,7 +44,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
             Expanded(
               child: ListView.builder(
                 itemCount: notificationCount,
-                itemBuilder: (context, index) => const NotificationTile(),
+                itemBuilder: (context, index) =>
+                    NotificationTile(isRead: isMarked),
               ),
             ),
             Padding(
