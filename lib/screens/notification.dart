@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/widgets/custom_appbar.dart';
+import 'package:my_project/widgets/custom_appbar_widget.dart';
 import 'package:my_project/widgets/notification_screen_widgets/notification_tile.dart';
 
 class NotificationScreen extends StatefulWidget {

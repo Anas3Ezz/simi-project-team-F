@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:my_project/widgets/home_screen_widgets/category_widget.dart';
+import 'package:my_project/widgets/home_screen_widgets/category.dart';
 
 class CategoryListBuilder extends StatelessWidget {
   CategoryListBuilder({super.key});

@@ -4,12 +4,12 @@ import 'package:my_project/constants/app_strings.dart';
 import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/navigation_menu.dart';
 import 'package:my_project/screens/sign_in_screen.dart';
-import 'package:my_project/widgets/app_validator.dart';
+import 'package:my_project/widgets/app_validator_widget.dart';
 
 import '../theme/text_styles.dart';
-import '../widgets/app_text_form_field.dart';
-import '../widgets/custom_appbar.dart';
-import '../widgets/primary_button.dart';
+import '../widgets/custom_appbar_widget.dart';
+import '../widgets/custom_text_form_widget.dart';
+import '../widgets/primary_button_widget.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});

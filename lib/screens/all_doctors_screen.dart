@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/theme/app_colors.dart';
 import 'package:my_project/widgets/all_doctors_widgets/doctors_list_builder.dart';
-import 'package:my_project/widgets/custom_appbar.dart';
+import 'package:my_project/widgets/custom_appbar_widget.dart';
 import 'package:my_project/widgets/search_bar_widget.dart';
 
 class AllDoctorsScreen extends StatelessWidget {

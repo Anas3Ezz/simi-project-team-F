@@ -59,7 +59,6 @@ class ProfileScreen extends StatelessWidget {
               title: "Logout",
               isLogout: true,
               onTap: () {
-                print('DVvsvasdvasva');
                 Hive.box<SignInUserModel>(AppStrings.signInUserBox)
                     .clear()
                     .then((c) {
