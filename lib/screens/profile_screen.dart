@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/theme/text_styles.dart';
 import 'package:my_project/widgets/profile_screen_widget/profile_tile.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({super.key, this.user});
+  final SignInUserModel? user;
+  String formatDisplayName(String? email) {
+    if (email == null || !email.contains('@')) return "User";
+
+    String namePart = email.split('@')[0];
+
+    return namePart[0].toUpperCase() + namePart.substring(1).toLowerCase();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final String displayName = formatDisplayName(user?.email);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
+
         title: Text("Profile", style: AppTextStyles.screenTitles),
         centerTitle: true,
       ),
@@ -26,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
               backgroundImage: AssetImage('assets/images/user.jpg'),
             ),
             const SizedBox(height: 15),
-            Text("John Doe William", style: AppTextStyles.heading2),
+            Text(displayName, style: AppTextStyles.heading2),
             const SizedBox(height: 30),
             // Menu Items
             const ProfileTile(icon: Icons.history, title: "History"),
