@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/screens/notification.dart';
 
 class HomeScreenAppBar extends StatelessWidget {
   const HomeScreenAppBar({super.key});
@@ -34,14 +35,22 @@ class HomeScreenAppBar extends StatelessWidget {
           ],
         ),
 
-        Stack(
-          children: [
-            const Icon(Icons.notifications_none, size: 30),
-            Positioned(
-              right: 3,
-              child: CircleAvatar(radius: 5, backgroundColor: Colors.red),
-            ),
-          ],
+        InkWell(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => NotificationScreen()),
+            );
+          },
+          child: Stack(
+            children: [
+              const Icon(Icons.notifications_none, size: 30),
+              Positioned(
+                right: 3,
+                child: CircleAvatar(radius: 5, backgroundColor: Colors.red),
+              ),
+            ],
+          ),
         ),
       ],
     );
