@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:my_project/constants/app_strings.dart';
+import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/navigation_menu.dart';
 import 'package:my_project/screens/sign_up_screen.dart';
 
@@ -7,17 +10,40 @@ import '../widgets/app_text_form_field.dart';
 import '../widgets/custom_appbar.dart';
 import '../widgets/primary_button.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   final formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  AutovalidateMode _autoValidateMode = AutovalidateMode.disabled;
+  final AutovalidateMode _autoValidateMode = AutovalidateMode.disabled;
+  void signIn() async {
+    var myBox = Hive.box<SignInUserModel>(AppStrings.signInUserBox);
+    await myBox.clear();
+    myBox
+        .add(
+          SignInUserModel(
+            email: emailController.text,
+            password: passwordController.text,
+          ),
+        )
+        .then((c) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const NavigationMenu()),
+            (route) => false,
+          );
+        })
+        .catchError((error) {
+          print('Error $error');
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +51,11 @@ class _AuthScreenState extends State<AuthScreen> {
       backgroundColor: Colors.white,
       appBar: const CustomAppBar(title: "Welcome"),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 20),
-          child: Form(
-            key: formKey,
-            autovalidateMode: _autoValidateMode,
+        child: Form(
+          key: formKey,
+          autovalidateMode: _autoValidateMode,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -42,11 +68,15 @@ class _AuthScreenState extends State<AuthScreen> {
                 const SizedBox(height: 40),
                 Text("Email", style: AppTextStyles.heading1),
                 const SizedBox(height: 18),
-                const AppTextFormField(hintText: 'Enter Your Email'),
+                AppTextFormField(
+                  controller: emailController,
+                  hintText: 'Enter Your Email',
+                ),
                 const SizedBox(height: 26),
                 Text("Password", style: AppTextStyles.heading1),
                 const SizedBox(height: 18),
-                const AppTextFormField(
+                AppTextFormField(
+                  controller: passwordController,
                   obscureText: true,
                   hintText: 'Enter Your Password',
                   suffixIcon: Icon(Icons.visibility_off),
@@ -70,17 +100,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   title: 'Sign In',
                   onPressed: () {
                     if (formKey.currentState?.validate() ?? false) {
-                      // Logic for successful login
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (c) => const NavigationMenu(),
-                        ),
-                      );
-                    } else {
-                      setState(() {
-                        _autoValidateMode = AutovalidateMode.onUserInteraction;
-                      });
+                      signIn();
                     }
                   },
                 ),
@@ -148,5 +168,12 @@ class _AuthScreenState extends State<AuthScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
   }
 }

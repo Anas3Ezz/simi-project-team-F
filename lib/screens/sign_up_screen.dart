@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:my_project/constants/app_strings.dart';
+import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/navigation_menu.dart';
-import 'package:my_project/screens/sign_in.dart';
+import 'package:my_project/screens/sign_in_screen.dart';
 
 import '../theme/text_styles.dart';
 import '../widgets/app_text_form_field.dart';
@@ -15,8 +18,34 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  var formKey = GlobalKey<FormState>();
-  AutovalidateMode _autoValidateMode = AutovalidateMode.disabled;
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+  void signIn() async {
+    var myBox = Hive.box<SignInUserModel>(AppStrings.signInUserBox);
+    await myBox.clear();
+    myBox
+        .add(
+          SignInUserModel(
+            email: emailController.text,
+            password: passwordController.text,
+          ),
+        )
+        .then((c) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const NavigationMenu()),
+            (route) => false,
+          );
+        })
+        .catchError((error) {
+          print('Error $error');
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +53,11 @@ class _SignUpState extends State<SignUp> {
       backgroundColor: Colors.white,
       appBar: const CustomAppBar(title: "Create New Account"),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 27),
-          child: Form(
-            key: formKey,
-            autovalidateMode: _autoValidateMode,
+        child: Form(
+          key: formKey,
+          autovalidateMode: autoValidateMode,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 27),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,29 +66,33 @@ class _SignUpState extends State<SignUp> {
                   Text("Full Name", style: AppTextStyles.heading1),
                   SizedBox(height: 18),
                   AppTextFormField(
+                    controller: nameController,
                     keyboardType: TextInputType.name,
                     hintText: 'Enter Your Name',
                   ),
                   SizedBox(height: 26),
+                  Text("Email", style: AppTextStyles.heading1),
+                  SizedBox(height: 18),
+                  AppTextFormField(
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    hintText: 'Enter Your Email',
+                  ),
+                  SizedBox(height: 18),
                   Text("Password", style: AppTextStyles.heading1),
                   SizedBox(height: 18),
                   AppTextFormField(
+                    controller: passwordController,
                     keyboardType: TextInputType.number,
                     obscureText: true,
                     hintText: 'Enter Your Password',
                     suffixIcon: Icon(Icons.visibility_off),
                   ),
                   SizedBox(height: 18),
-                  Text("Email", style: AppTextStyles.heading1),
-                  SizedBox(height: 18),
-                  AppTextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    hintText: 'Enter Your Email',
-                  ),
-                  SizedBox(height: 18),
                   Text("Mobile Number", style: AppTextStyles.heading1),
                   SizedBox(height: 18),
                   AppTextFormField(
+                    controller: phoneController,
                     keyboardType: TextInputType.phone,
                     hintText: 'Enter Your Mobile Number',
                   ),
@@ -68,16 +101,11 @@ class _SignUpState extends State<SignUp> {
                     title: 'Sign Up',
                     onPressed: () {
                       if (formKey.currentState?.validate() ?? false) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (c) => NavigationMenu()),
-                        );
-                      } else {
-                        _autoValidateMode = AutovalidateMode.onUserInteraction;
+                        signIn();
                       }
                     },
                   ),
-                  SizedBox(height: 21),
+                  const SizedBox(height: 21),
                   Center(
                     child: Text(
                       "OR",
@@ -88,7 +116,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 19),
+                  const SizedBox(height: 19),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -105,7 +133,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 38),
+                  const SizedBox(height: 38),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -121,22 +149,18 @@ class _SignUpState extends State<SignUp> {
                           Navigator.pop(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => AuthScreen(),
+                              builder: (context) => SignInScreen(),
                             ),
                           );
                         },
                         child: Text(
                           "Sign In",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                            color: Colors.blue,
-                          ),
+                          style: AppTextStyles.subTitles.copyWith(fontSize: 18),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 25),
+                  SizedBox(height: 40),
                 ],
               ),
             ),
@@ -144,5 +168,14 @@ class _SignUpState extends State<SignUp> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+    phoneController.dispose();
+    super.dispose();
   }
 }
