@@ -35,7 +35,7 @@ class DoctorCardWidget extends StatelessWidget {
                       style: AppTextStyles.bodyText2,
                     ),
                   ),
-                  DoctorCardFooter(doctor: doctor, rate: 5),
+                  DoctorCardFooter(rate: doctor.rate),
                 ],
               ),
             ),

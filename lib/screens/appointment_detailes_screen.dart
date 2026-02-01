@@ -6,11 +6,8 @@ import 'package:my_project/widgets/primary_button.dart';
 import 'package:my_project/widgets/section_title_widget.dart';
 import 'package:my_project/widgets/sub_screens_app_bar.dart';
 
-import '../models/doctor_model.dart';
-
 class AppointmentDetailesScreen extends StatelessWidget {
-  final DoctorModel doctor;
-  const AppointmentDetailesScreen({super.key, required this.doctor});
+  const AppointmentDetailesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +25,7 @@ class AppointmentDetailesScreen extends StatelessWidget {
                   spacing: 5,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppointmentDetailsHeader(doctor: doctor),
+                    const AppointmentDetailsHeader(),
                     const SizedBox(height: 25),
                     const DoctorInfoDetails(),
                     const SizedBox(height: 25),

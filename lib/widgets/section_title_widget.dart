@@ -5,7 +5,6 @@ class SectionTitle extends StatelessWidget {
   final String title;
   final void Function()? onTap;
   final String seeAll;
-
   const SectionTitle({
     super.key,
     required this.title,
