@@ -17,9 +17,8 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // Use double.infinity to fill the width by default
       width: width ?? double.infinity,
-      height: 56, // Standard height for mobile buttons
+      height: 56,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
