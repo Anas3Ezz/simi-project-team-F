@@ -44,15 +44,18 @@ class AppointmentDetailesScreen extends StatelessWidget {
                     ),
 
                     const SizedBox(height: 20),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 20,
+                      ),
+                      child: PrimaryButton(
+                        title: 'Book an Appointment',
+                        onPressed: () {},
+                      ),
+                    ),
                   ],
                 ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-              child: PrimaryButton(
-                title: 'Book an Appointment',
-                onPressed: () {},
               ),
             ),
           ],

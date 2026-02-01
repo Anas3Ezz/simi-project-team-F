@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/models/nav_item_model.dart';
+import 'package:my_project/screens/appointment_detailes_screen.dart';
 import 'package:my_project/screens/home_screen.dart';
 import 'package:my_project/screens/messages_screen.dart';
 import 'package:my_project/theme/app_colors.dart';
@@ -17,7 +18,10 @@ class _RootState extends State<Root> {
 
   final List<NavItemModel> _screensList = [
     const NavItemModel(icon: Icons.home_outlined, screen: HomeScreen()),
-    const NavItemModel(icon: Icons.access_time, screen: HomeScreen()),
+    const NavItemModel(
+      icon: Icons.access_time,
+      screen: AppointmentDetailesScreen(),
+    ),
     const NavItemModel(icon: Icons.chat_outlined, screen: MessagesScreen()),
     const NavItemModel(icon: Icons.perm_identity_rounded, screen: HomeScreen()),
   ];
