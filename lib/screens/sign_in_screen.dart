@@ -4,6 +4,7 @@ import 'package:my_project/constants/app_strings.dart';
 import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/navigation_menu.dart';
 import 'package:my_project/screens/sign_up_screen.dart';
+import 'package:my_project/widgets/app_validator.dart';
 
 import '../theme/text_styles.dart';
 import '../widgets/app_text_form_field.dart';
@@ -69,6 +70,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 Text("Email", style: AppTextStyles.heading1),
                 const SizedBox(height: 18),
                 AppTextFormField(
+                  validator: AppValidators.validateEmail,
                   controller: emailController,
                   hintText: 'Enter Your Email',
                 ),
@@ -80,6 +82,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   obscureText: true,
                   hintText: 'Enter Your Password',
                   suffixIcon: Icon(Icons.visibility_off),
+                  validator: AppValidators.validatePassword,
                 ),
                 const SizedBox(height: 18),
                 Align(
