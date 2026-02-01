@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../theme/text_styles.dart';
 
-class AuthAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
-  const AuthAppBar({super.key, required this.title});
+  const CustomAppBar({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

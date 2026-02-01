@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:my_project/widgets/appointment_details_screen_widget/appointment_details_screen_header.dart';
 import 'package:my_project/widgets/appointment_details_screen_widget/doctot_info_details.dart';
 import 'package:my_project/widgets/appointment_details_screen_widget/selection_slot_picker.dart';
+import 'package:my_project/widgets/custom_appbar.dart';
 import 'package:my_project/widgets/primary_button.dart';
 import 'package:my_project/widgets/section_title_widget.dart';
-import 'package:my_project/widgets/sub_screens_app_bar.dart';
 
 class AppointmentDetailesScreen extends StatelessWidget {
   const AppointmentDetailesScreen({super.key});
@@ -13,7 +13,7 @@ class AppointmentDetailesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const SubScreensHeader(title: "Appointment"),
+      appBar: CustomAppBar(title: 'Appointments'),
       body: SafeArea(
         child: Column(
           children: [

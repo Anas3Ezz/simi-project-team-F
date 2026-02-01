@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/screens/auth_screen.dart';
-import 'package:my_project/screens/root.dart';
+import 'package:my_project/screens/navigation_menu.dart';
+import 'package:my_project/screens/sign_in.dart';
 
 import '../theme/text_styles.dart';
 import '../widgets/app_text_form_field.dart';
-import '../widgets/auth_app_bar.dart';
+import '../widgets/custom_appbar.dart';
 import '../widgets/primary_button.dart';
 
 class SignUp extends StatefulWidget {
@@ -22,7 +22,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const AuthAppBar(title: "Create New Account"),
+      appBar: const CustomAppBar(title: "Create New Account"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 27),
@@ -70,7 +70,7 @@ class _SignUpState extends State<SignUp> {
                       if (formKey.currentState?.validate() ?? false) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (c) => Root()),
+                          MaterialPageRoute(builder: (c) => NavigationMenu()),
                         );
                       } else {
                         _autoValidateMode = AutovalidateMode.onUserInteraction;

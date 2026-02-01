@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/screens/root.dart';
+import 'package:my_project/screens/navigation_menu.dart';
 import 'package:my_project/screens/sign_up_screen.dart';
 
 import '../theme/text_styles.dart';
 import '../widgets/app_text_form_field.dart';
-import '../widgets/auth_app_bar.dart';
+import '../widgets/custom_appbar.dart';
 import '../widgets/primary_button.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const AuthAppBar(title: "Welcome"),
+      appBar: const CustomAppBar(title: "Welcome"),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 20),
@@ -73,7 +73,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       // Logic for successful login
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (c) => const Root()),
+                        MaterialPageRoute(
+                          builder: (c) => const NavigationMenu(),
+                        ),
                       );
                     } else {
                       setState(() {
