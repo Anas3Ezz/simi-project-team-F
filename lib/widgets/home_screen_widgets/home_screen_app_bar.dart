@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/notification.dart';
+import 'package:my_project/theme/app_colors.dart';
+import 'package:my_project/theme/text_styles.dart';
 
 class HomeScreenAppBar extends StatelessWidget {
   const HomeScreenAppBar({super.key, this.user});
@@ -16,7 +18,7 @@ class HomeScreenAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String displayName = formatDisplayName(user?.email);
-
+    final String firstLetter = displayName.isNotEmpty ? displayName[0] : "U";
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -24,7 +26,8 @@ class HomeScreenAppBar extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 25,
-              backgroundImage: Image.asset("assets/images/user.jpg").image,
+              backgroundColor: AppColors.primaryTeal,
+              child: Text(firstLetter, style: AppTextStyles.primaryButton),
             ),
             const SizedBox(width: 10),
             Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/models/sign_in_user_model.dart';
+import 'package:my_project/theme/app_colors.dart';
 import 'package:my_project/theme/text_styles.dart';
 import 'package:my_project/widgets/profile_screen_widget/profile_tile.dart';
 
@@ -17,13 +18,13 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final String displayName = formatDisplayName(user?.email);
+    final String firstLetter = displayName.isNotEmpty ? displayName[0] : "U";
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-
         title: Text("Profile", style: AppTextStyles.screenTitles),
         centerTitle: true,
       ),
@@ -32,9 +33,13 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 20),
-            const CircleAvatar(
-              radius: 60,
-              backgroundImage: AssetImage('assets/images/user.jpg'),
+            CircleAvatar(
+              radius: 50,
+              backgroundColor: AppColors.primaryTeal,
+              child: Text(
+                firstLetter,
+                style: AppTextStyles.primaryButton.copyWith(fontSize: 50),
+              ),
             ),
             const SizedBox(height: 15),
             Text(displayName, style: AppTextStyles.heading2),
