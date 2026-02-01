@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:my_project/constants/app_strings.dart';
+import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/appointment_detailes_screen.dart';
 import 'package:my_project/screens/home_screen.dart';
 import 'package:my_project/screens/messages_screen.dart';
@@ -15,15 +18,17 @@ class NavigationMenu extends StatefulWidget {
 
 class _NavigationMenuState extends State<NavigationMenu> {
   int _selectedIndex = 0;
+  final SignInUserModel? user = Hive.box<SignInUserModel>(
+    AppStrings.signInUserBox,
+  ).getAt(0);
 
-  final List<Widget> _pages = [
+  List<Widget> get _screens => [
     HomeScreen(),
     const AppointmentDetailesScreen(),
     const MessagesScreen(),
-    const ProfileScreen(),
+    ProfileScreen(user: user),
   ];
 
-  // Keep UI data separate from logic
   final List<IconData> _navIcons = const [
     Icons.home_outlined,
     Icons.access_time,
@@ -35,7 +40,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: IndexedStack(index: _selectedIndex, children: _pages),
+      body: IndexedStack(index: _selectedIndex, children: _screens),
       bottomNavigationBar: BottomAppBar(
         color: AppColors.white,
         height: 80,
