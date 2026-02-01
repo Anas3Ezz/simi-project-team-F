@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/widgets/custom_appbar.dart';
-import 'package:my_project/widgets/notification_screen_widget/notification_tile.dart';
+import 'package:my_project/widgets/notification_screen_widgets/notification_tile.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
