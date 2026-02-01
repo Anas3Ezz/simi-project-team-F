@@ -24,10 +24,10 @@ class SliderItem extends StatelessWidget {
                   margin: const EdgeInsetsGeometry.only(left: 150),
                   child: Image.asset("assets/images/doctor2.png"),
                 ),
-                Column(
+                const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       "Medical Center",
                       style: TextStyle(
                         fontSize: 20,
@@ -35,7 +35,7 @@ class SliderItem extends StatelessWidget {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    const SizedBox(
+                    SizedBox(
                       width: 150,
                       child: Text(
                         style: TextStyle(fontSize: 11, color: Colors.white),

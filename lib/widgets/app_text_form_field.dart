@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 
 class AppTextFormField extends StatefulWidget {
   final String hintText;
-  final Widget? suffixIcon;
-  final TextInputType input;
+  final TextInputType? input;
   final String? Function(String?)? validator;
 
   const AppTextFormField({
     super.key,
     required this.hintText,
-    this.suffixIcon,
     this.validator,
-    this.input = TextInputType.text,
+    this.input,
   });
 
   @override
@@ -19,7 +17,7 @@ class AppTextFormField extends StatefulWidget {
 }
 
 class _AppTextFormFieldState extends State<AppTextFormField> {
-  late bool hide = true;
+  late bool hide = isPassword(widget.input);
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +33,10 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
             if (value == null || value.isEmpty) {
               return "This field is required";
             }
+            return null;
           },
       decoration: InputDecoration(
-        fillColor: Color(0xffD9D9D9),
+        fillColor: const Color(0xffD9D9D9),
         filled: true,
         suffixIcon: isPassword(widget.input)
             ? GestureDetector(
@@ -47,25 +46,25 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
                   });
                 },
                 child: hide
-                    ? Icon(Icons.visibility_off)
-                    : Icon(Icons.visibility, color: Colors.blue),
+                    ? const Icon(Icons.visibility_off)
+                    : const Icon(Icons.visibility, color: Colors.blue),
               )
             : null,
         hintText: widget.hintText,
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.red, width: 1.0),
+          borderSide: const BorderSide(color: Colors.red, width: 1.0),
           borderRadius: BorderRadius.circular(10.0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey, width: 1.0),
+          borderSide: const BorderSide(color: Colors.grey, width: 1.0),
           borderRadius: BorderRadius.circular(10.0),
         ),
-        focusedBorder: OutlineInputBorder(),
+        focusedBorder: const OutlineInputBorder(),
       ),
     );
   }
 }
 
-bool isPassword(TextInputType input) {
+bool isPassword(TextInputType? input) {
   return input == TextInputType.visiblePassword;
 }

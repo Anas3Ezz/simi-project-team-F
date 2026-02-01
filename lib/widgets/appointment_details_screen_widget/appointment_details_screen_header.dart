@@ -76,9 +76,9 @@ class AppointmentDetailsHeader extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
 
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children: [
                     Text(
                       'Payment',
                       style: TextStyle(

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/root.dart';
 import 'package:my_project/screens/auth_screen.dart';
-import 'package:my_project/screens/home_screen.dart';
 import 'package:my_project/theme/app_colors.dart';
 import 'package:my_project/widgets/sub_screens_app_bar.dart';
 
 import '../theme/text_styles.dart';
 import '../widgets/app_text_form_field.dart';
 import '../widgets/primary_button.dart';
+import '../widgets/registration_options_widget.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -32,45 +33,45 @@ class _SignUpState extends State<SignUp> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Full Name", style: AppTextStyles.heading1),
-                SizedBox(height: 18),
-                AppTextFormField(hintText: 'Enter Your Name'),
-                SizedBox(height: 26),
-                Text("Password", style: AppTextStyles.heading1),
-                SizedBox(height: 18),
-                AppTextFormField(
+                const Text("Full Name", style: AppTextStyles.heading1),
+                const SizedBox(height: 18),
+                const AppTextFormField(hintText: 'Enter Your Name'),
+                const SizedBox(height: 26),
+                const Text("Password", style: AppTextStyles.heading1),
+                const SizedBox(height: 18),
+                const AppTextFormField(
                   input: TextInputType.visiblePassword,
                   hintText: 'Enter Your Password',
-                  suffixIcon: Icon(Icons.visibility_off),
                 ),
-                SizedBox(height: 18),
-                Text("Email", style: AppTextStyles.heading1),
-                SizedBox(height: 18),
-                AppTextFormField(
+                const SizedBox(height: 18),
+                const Text("Email", style: AppTextStyles.heading1),
+                const SizedBox(height: 18),
+                const AppTextFormField(
                   input: TextInputType.emailAddress,
                   hintText: 'Enter Your Email',
                 ),
-                SizedBox(height: 18),
-                Text("Mobile Number", style: AppTextStyles.heading1),
-                SizedBox(height: 18),
-                AppTextFormField(
+                const SizedBox(height: 18),
+                const Text("Mobile Number", style: AppTextStyles.heading1),
+                const SizedBox(height: 18),
+                const AppTextFormField(
                   hintText: 'Enter Your Mobile Number',
                   input: TextInputType.number,
                 ),
-                SizedBox(height: 18),
+                const SizedBox(height: 18),
                 PrimaryButton(
                   title: 'Sign Up',
                   onPressed: () {
                     if (formKey.currentState?.validate() ?? false) {
-                      Navigator.push(
+                      Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (c) => HomeScreen()),
+                        MaterialPageRoute(builder: (c) => const Root()),
+                        (route) => false,
                       );
                     }
                   },
                 ),
-                SizedBox(height: 15),
-                Center(
+                const SizedBox(height: 15),
+                const Center(
                   child: Text(
                     "OR",
                     style: TextStyle(
@@ -80,57 +81,11 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
-                SizedBox(height: 19),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.white,
-                          child: Image.asset("assets/images/Facebook_Logo.png"),
-                        ),
-                        SizedBox(width: 35),
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.white,
-                          child: Image.asset("assets/images/google_logo.png"),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Do you have an account? ",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AuthScreen(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            "Sign In",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 16,
-                              color: Colors.blue,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                const SizedBox(height: 19),
+                const RegistrationOptionsWidget(
+                  screen: AuthScreen(),
+                  message: "Do you have an account? ",
+                  option: "Sign In",
                 ),
               ],
             ),

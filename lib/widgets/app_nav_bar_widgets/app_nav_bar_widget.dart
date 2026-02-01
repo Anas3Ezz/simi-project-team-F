@@ -7,7 +7,7 @@ class AppNavBar extends StatelessWidget {
   const AppNavBar({super.key});
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
+    return const BottomAppBar(
       color: AppColors.white,
       height: 70,
       child: NavBarBuilder(),

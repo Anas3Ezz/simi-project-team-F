@@ -9,7 +9,10 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsetsDirectional.symmetric(horizontal: 29, vertical: 25),
+      padding: const EdgeInsetsDirectional.symmetric(
+        horizontal: 29,
+        vertical: 25,
+      ),
       height: 80,
       decoration: BoxDecoration(
         color: AppColors.secondaryTeal,

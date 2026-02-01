@@ -17,33 +17,33 @@ class AppointmentDetailesScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
+            const Expanded(
               child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.all(16.0),
+                physics: BouncingScrollPhysics(),
+                padding: EdgeInsets.all(16.0),
                 child: Column(
                   spacing: 5,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const AppointmentDetailsHeader(),
-                    const SizedBox(height: 25),
-                    const DoctorInfoDetails(),
-                    const SizedBox(height: 25),
-                    const SectionTitle(title: 'Working Hours'),
-                    const SizedBox(height: 15),
-                    const SelectionSlotPicker(
+                    AppointmentDetailsHeader(),
+                    SizedBox(height: 25),
+                    DoctorInfoDetails(),
+                    SizedBox(height: 25),
+                    SectionTitle(title: 'Working Hours'),
+                    SizedBox(height: 15),
+                    SelectionSlotPicker(
                       items: ['10.00 AM', '11.00 AM', '12.00 PM', '01.00 PM'],
                       initialSelected: '11.00 AM',
                     ),
-                    const SizedBox(height: 25),
-                    const SectionTitle(title: 'Date'),
-                    const SizedBox(height: 15),
-                    const SelectionSlotPicker(
+                    SizedBox(height: 25),
+                    SectionTitle(title: 'Date'),
+                    SizedBox(height: 15),
+                    SelectionSlotPicker(
                       items: ['Sun 4', 'Mon 5', 'Tue 6', 'Wed 7'],
                       initialSelected: 'Sun 4',
                     ),
 
-                    const SizedBox(height: 20),
+                    SizedBox(height: 20),
                   ],
                 ),
               ),

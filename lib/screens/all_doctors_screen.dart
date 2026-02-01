@@ -6,7 +6,6 @@ import 'package:my_project/widgets/search_bar_widget.dart';
 import '../widgets/sub_screens_app_bar.dart';
 
 class AllDoctorsScreen extends StatelessWidget {
-
   const AllDoctorsScreen({super.key});
 
   @override
@@ -20,9 +19,7 @@ class AllDoctorsScreen extends StatelessWidget {
           children: [
             const SearchBarWidget(),
             const SizedBox(height: 15),
-            Expanded(
-              child: CustomScrollView(slivers: [const DoctorsListBuilder()]),
-            ),
+            Expanded(child: CustomScrollView(slivers: [DoctorsListBuilder()])),
           ],
         ),
       ),

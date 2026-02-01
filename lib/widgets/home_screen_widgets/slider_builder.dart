@@ -12,10 +12,10 @@ class SliderBuilder extends StatefulWidget {
 
 class _SliderBuilderState extends State<SliderBuilder> {
   List<SliderItem> items = [
-    SliderItem(),
-    SliderItem(),
-    SliderItem(),
-    SliderItem(),
+    const SliderItem(),
+    const SliderItem(),
+    const SliderItem(),
+    const SliderItem(),
   ];
 
   int _selectdIndex = 0;
@@ -49,9 +49,9 @@ class _SliderBuilderState extends State<SliderBuilder> {
                   radius: _selectdIndex == i ? 7 : 5,
                   backgroundColor: _selectdIndex == i
                       ? AppColors.primaryTeal
-                      : Color(0x66C4C4B2),
+                      : const Color(0x66C4C4B2),
                 ),
-                SizedBox(width: 7),
+                const SizedBox(width: 7),
               ],
             );
           }),
