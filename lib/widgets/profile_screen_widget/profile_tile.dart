@@ -6,9 +6,9 @@ class ProfileTile extends StatelessWidget {
   final IconData icon;
   final String title;
   final bool isLogout;
-  void Function()? onTap;
+  final void Function()? onTap;
 
-  ProfileTile({
+  const ProfileTile({
     super.key,
     required this.icon,
     required this.title,
