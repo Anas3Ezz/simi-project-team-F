@@ -26,6 +26,8 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController phoneController = TextEditingController();
 
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+  bool isObscure = true;
+
   void signIn() async {
     var myBox = Hive.box<SignInUserModel>(AppStrings.signInUserBox);
     await myBox.clear();
@@ -85,12 +87,20 @@ class _SignUpState extends State<SignUp> {
                   Text("Password", style: AppTextStyles.heading1),
                   SizedBox(height: 18),
                   AppTextFormField(
-                    validator: AppValidators.validatePassword,
                     controller: passwordController,
-                    keyboardType: TextInputType.number,
-                    obscureText: true,
+                    obscureText: isObscure,
                     hintText: 'Enter Your Password',
-                    suffixIcon: Icon(Icons.visibility_off),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isObscure = !isObscure;
+                        });
+                      },
+                      icon: Icon(
+                        isObscure ? Icons.visibility_off : Icons.visibility,
+                      ),
+                    ),
+                    validator: AppValidators.validatePassword,
                   ),
                   SizedBox(height: 18),
                   Text("Mobile Number", style: AppTextStyles.heading1),

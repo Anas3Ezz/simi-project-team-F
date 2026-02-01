@@ -23,8 +23,8 @@ class _SignInScreenState extends State<SignInScreen> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
   final AutovalidateMode _autoValidateMode = AutovalidateMode.disabled;
+  bool isObscure = true;
   void signIn() async {
     var myBox = Hive.box<SignInUserModel>(AppStrings.signInUserBox);
     await myBox.clear();
@@ -82,9 +82,19 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(height: 18),
                 AppTextFormField(
                   controller: passwordController,
-                  obscureText: true,
+                  obscureText: isObscure,
                   hintText: 'Enter Your Password',
-                  suffixIcon: Icon(Icons.visibility_off),
+
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isObscure = !isObscure;
+                      });
+                    },
+                    icon: Icon(
+                      isObscure ? Icons.visibility_off : Icons.visibility,
+                    ),
+                  ),
                   validator: AppValidators.validatePassword,
                 ),
                 const SizedBox(height: 18),
