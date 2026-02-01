@@ -1,28 +1,57 @@
 import 'package:flutter/material.dart';
 
-class AppTextFormField extends StatelessWidget {
+class AppTextFormField extends StatefulWidget {
   final String hintText;
   final Widget? suffixIcon;
+  final TextInputType input;
   final String? Function(String?)? validator;
-  const AppTextFormField({super.key, required this.hintText, this.suffixIcon, this.validator});
+
+  const AppTextFormField({
+    super.key,
+    required this.hintText,
+    this.suffixIcon,
+    this.validator,
+    this.input = TextInputType.text,
+  });
+
+  @override
+  State<AppTextFormField> createState() => _AppTextFormFieldState();
+}
+
+class _AppTextFormFieldState extends State<AppTextFormField> {
+  late bool hide = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      onTapOutside: (value){
+      obscureText: hide ? true : false,
+      keyboardType: widget.input,
+      onTapOutside: (value) {
         FocusScope.of(context).unfocus();
       },
-      validator:validator??(value){
-        if(value==null||value.isEmpty){
-          return "This field is required";
-        }
-
-      },
+      validator:
+          widget.validator ??
+          (value) {
+            if (value == null || value.isEmpty) {
+              return "This field is required";
+            }
+          },
       decoration: InputDecoration(
         fillColor: Color(0xffD9D9D9),
         filled: true,
-        suffixIcon: suffixIcon,
-        hintText: hintText,
+        suffixIcon: isPassword(widget.input)
+            ? GestureDetector(
+                onTap: () {
+                  setState(() {
+                    hide = !hide;
+                  });
+                },
+                child: hide
+                    ? Icon(Icons.visibility_off)
+                    : Icon(Icons.visibility, color: Colors.blue),
+              )
+            : null,
+        hintText: widget.hintText,
         errorBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 1.0),
           borderRadius: BorderRadius.circular(10.0),
@@ -35,4 +64,8 @@ class AppTextFormField extends StatelessWidget {
       ),
     );
   }
+}
+
+bool isPassword(TextInputType input) {
+  return input == TextInputType.visiblePassword;
 }

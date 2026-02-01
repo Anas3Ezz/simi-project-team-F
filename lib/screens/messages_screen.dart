@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/theme/text_styles.dart';
-import 'package:my_project/widgets/Messages_screen_widgets/doctor_message_tile.dart';
 import 'package:my_project/widgets/messages_screen_widgets/active_doctors_list_widget.dart';
 import 'package:my_project/widgets/search_bar_widget.dart';
 import 'package:my_project/widgets/section_title_widget.dart';
+
+import '../widgets/messages_screen_widgets/doctor_message_tile.dart';
 
 class MessagesScreen extends StatefulWidget {
   const MessagesScreen({super.key});
