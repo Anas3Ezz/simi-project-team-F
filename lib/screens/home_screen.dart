@@ -4,6 +4,7 @@ import 'package:my_project/screens/all_doctors_screen.dart';
 import 'package:my_project/widgets/all_doctors_widgets/doctor_card_widget.dart';
 import 'package:my_project/widgets/search_bar_widget.dart';
 
+import '../widgets/app_nav_bar_widgets/app_nav_bar_widget.dart';
 import '../widgets/home_screen_widgets/category_list_builder.dart';
 import '../widgets/home_screen_widgets/home_screen_app_bar.dart';
 import '../widgets/home_screen_widgets/slider_builder.dart';
@@ -54,6 +55,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: const AppNavBar(),
     );
   }
 }

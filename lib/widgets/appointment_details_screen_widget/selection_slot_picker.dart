@@ -43,6 +43,7 @@ class _SelectionSlotPickerState extends State<SelectionSlotPicker> {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               alignment: Alignment.center,
               decoration: BoxDecoration(
+                // Logic based on your UI: Primary teal for selected, light gray for unselected
                 color: isSelected
                     ? AppColors.primaryTeal
                     : const Color(0xFFF5F8FA),

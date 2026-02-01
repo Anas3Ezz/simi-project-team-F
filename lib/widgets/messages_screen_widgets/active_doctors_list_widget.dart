@@ -18,7 +18,7 @@ class ActiveDoctorsList extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        itemCount: 10,
+        itemCount: 10, // In a real app, this would be doctors.length
         itemBuilder: (context, index) {
           return DoctorAvatar(
             image: 'assets/images/Rectangle 35.png',
