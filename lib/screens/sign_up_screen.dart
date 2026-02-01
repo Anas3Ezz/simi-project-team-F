@@ -4,12 +4,12 @@ import 'package:my_project/constants/app_strings.dart';
 import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/navigation_menu.dart';
 import 'package:my_project/screens/sign_in_screen.dart';
-import 'package:my_project/widgets/app_validator.dart';
+import 'package:my_project/widgets/app_validator_widget.dart';
 
 import '../theme/text_styles.dart';
-import '../widgets/app_text_form_field.dart';
-import '../widgets/custom_appbar.dart';
-import '../widgets/primary_button.dart';
+import '../widgets/custom_appbar_widget.dart';
+import '../widgets/custom_text_form_widget.dart';
+import '../widgets/primary_button_widget.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -26,6 +26,8 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController phoneController = TextEditingController();
 
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+  bool isObscure = true;
+
   void signIn() async {
     var myBox = Hive.box<SignInUserModel>(AppStrings.signInUserBox);
     await myBox.clear();
@@ -85,12 +87,20 @@ class _SignUpState extends State<SignUp> {
                   Text("Password", style: AppTextStyles.heading1),
                   SizedBox(height: 18),
                   AppTextFormField(
-                    validator: AppValidators.validatePassword,
                     controller: passwordController,
-                    keyboardType: TextInputType.number,
-                    obscureText: true,
+                    obscureText: isObscure,
                     hintText: 'Enter Your Password',
-                    suffixIcon: Icon(Icons.visibility_off),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isObscure = !isObscure;
+                        });
+                      },
+                      icon: Icon(
+                        isObscure ? Icons.visibility_off : Icons.visibility,
+                      ),
+                    ),
+                    validator: AppValidators.validatePassword,
                   ),
                   SizedBox(height: 18),
                   Text("Mobile Number", style: AppTextStyles.heading1),

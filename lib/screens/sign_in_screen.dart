@@ -1,15 +1,16 @@
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:my_project/constants/app_strings.dart';
 import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/navigation_menu.dart';
 import 'package:my_project/screens/sign_up_screen.dart';
-import 'package:my_project/widgets/app_validator.dart';
+import 'package:my_project/widgets/app_validator_widget.dart';
 
 import '../theme/text_styles.dart';
-import '../widgets/app_text_form_field.dart';
-import '../widgets/custom_appbar.dart';
-import '../widgets/primary_button.dart';
+import '../widgets/custom_appbar_widget.dart';
+import '../widgets/custom_text_form_widget.dart';
+import '../widgets/primary_button_widget.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -22,8 +23,8 @@ class _SignInScreenState extends State<SignInScreen> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
   final AutovalidateMode _autoValidateMode = AutovalidateMode.disabled;
+  bool isObscure = true;
   void signIn() async {
     var myBox = Hive.box<SignInUserModel>(AppStrings.signInUserBox);
     await myBox.clear();
@@ -42,7 +43,9 @@ class _SignInScreenState extends State<SignInScreen> {
           );
         })
         .catchError((error) {
-          print('Error $error');
+          if (kDebugMode) {
+            print('Error $error');
+          }
         });
   }
 
@@ -79,9 +82,19 @@ class _SignInScreenState extends State<SignInScreen> {
                 const SizedBox(height: 18),
                 AppTextFormField(
                   controller: passwordController,
-                  obscureText: true,
+                  obscureText: isObscure,
                   hintText: 'Enter Your Password',
-                  suffixIcon: Icon(Icons.visibility_off),
+
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isObscure = !isObscure;
+                      });
+                    },
+                    icon: Icon(
+                      isObscure ? Icons.visibility_off : Icons.visibility,
+                    ),
+                  ),
                   validator: AppValidators.validatePassword,
                 ),
                 const SizedBox(height: 18),

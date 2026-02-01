@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:my_project/constants/app_strings.dart';
 import 'package:my_project/models/sign_in_user_model.dart';
+import 'package:my_project/screens/sign_in_screen.dart';
 import 'package:my_project/theme/app_colors.dart';
 import 'package:my_project/theme/text_styles.dart';
 import 'package:my_project/widgets/profile_screen_widget/profile_tile.dart';
@@ -45,25 +48,30 @@ class ProfileScreen extends StatelessWidget {
             Text(displayName, style: AppTextStyles.heading2),
             const SizedBox(height: 30),
             // Menu Items
-            const ProfileTile(icon: Icons.history, title: "History"),
-            const ProfileTile(
-              icon: Icons.person_outline,
-              title: "Personal Details",
-            ),
-            const ProfileTile(
-              icon: Icons.location_on_outlined,
-              title: "Location",
-            ),
-            const ProfileTile(
-              icon: Icons.payment_outlined,
-              title: "Payment Method",
-            ),
-            const ProfileTile(icon: Icons.settings_outlined, title: "Settings"),
-            const ProfileTile(icon: Icons.help_outline, title: "Help"),
-            const ProfileTile(
+            ProfileTile(icon: Icons.history, title: "History"),
+            ProfileTile(icon: Icons.person_outline, title: "Personal Details"),
+            ProfileTile(icon: Icons.location_on_outlined, title: "Location"),
+            ProfileTile(icon: Icons.payment_outlined, title: "Payment Method"),
+            ProfileTile(icon: Icons.settings_outlined, title: "Settings"),
+            ProfileTile(icon: Icons.help_outline, title: "Help"),
+            ProfileTile(
               icon: Icons.logout,
               title: "Logout",
               isLogout: true,
+              onTap: () {
+                Hive.box<SignInUserModel>(AppStrings.signInUserBox)
+                    .clear()
+                    .then((c) {
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignInScreen()),
+                        (route) => false,
+                      );
+                    })
+                    .catchError((e) {
+                      print("ERROR");
+                    });
+              },
             ),
           ],
         ),

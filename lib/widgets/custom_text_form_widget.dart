@@ -34,18 +34,12 @@ class AppTextFormField extends StatelessWidget {
       obscureText: obscureText,
       keyboardType: keyboardType,
       onTapOutside: (_) => FocusScope.of(context).unfocus(),
-      validator:
-          validator ??
-          (value) {
-            if (value == null || value.isEmpty) {
-              return "This field is required";
-            }
-            return null;
-          },
+      validator: validator,
       decoration: InputDecoration(
         fillColor: AppColors.textFormFieldColor,
         filled: true,
         suffixIcon: suffixIcon,
+
         hintText: hintText,
         enabledBorder: _buildBorder(Colors.grey),
         focusedBorder: _buildBorder(AppColors.primaryTeal),

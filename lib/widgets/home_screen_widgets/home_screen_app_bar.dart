@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/notification.dart';
+import 'package:my_project/screens/profile_screen.dart';
 import 'package:my_project/theme/app_colors.dart';
 import 'package:my_project/theme/text_styles.dart';
 
@@ -24,10 +25,18 @@ class HomeScreenAppBar extends StatelessWidget {
       children: [
         Row(
           children: [
-            CircleAvatar(
-              radius: 25,
-              backgroundColor: AppColors.primaryTeal,
-              child: Text(firstLetter, style: AppTextStyles.primaryButton),
+            InkWell(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfileScreen(user: user),
+                ),
+              ),
+              child: CircleAvatar(
+                radius: 25,
+                backgroundColor: AppColors.primaryTeal,
+                child: Text(firstLetter, style: AppTextStyles.primaryButton),
+              ),
             ),
             const SizedBox(width: 10),
             Column(
