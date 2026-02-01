@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/notification.dart';
 
 class HomeScreenAppBar extends StatelessWidget {
-  const HomeScreenAppBar({super.key});
+  const HomeScreenAppBar({super.key, this.user});
+  final SignInUserModel? user;
+  // 2. Add this helper method to extract the name
+  String formatDisplayName(String? email) {
+    if (email == null || !email.contains('@')) return "User";
+
+    // Take everything before the @
+    String namePart = email.split('@')[0];
+
+    // Capitalize the first letter (Expert touch for better UI)
+    return namePart[0].toUpperCase() + namePart.substring(1).toLowerCase();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final String displayName = formatDisplayName(user?.email);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -24,7 +38,7 @@ class HomeScreenAppBar extends StatelessWidget {
                   style: TextStyle(fontSize: 14, color: Color(0xff858585)),
                 ),
                 Text(
-                  "John Doe William",
+                  displayName,
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,

@@ -16,11 +16,11 @@ class NavigationMenu extends StatefulWidget {
 class _NavigationMenuState extends State<NavigationMenu> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = const [
+  final List<Widget> _pages = [
     HomeScreen(),
-    AppointmentDetailesScreen(),
-    MessagesScreen(),
-    ProfileScreen(),
+    const AppointmentDetailesScreen(),
+    const MessagesScreen(),
+    const ProfileScreen(),
   ];
 
   // Keep UI data separate from logic
@@ -30,6 +30,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
     Icons.chat_outlined,
     Icons.perm_identity_rounded,
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

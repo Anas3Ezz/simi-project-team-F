@@ -7,6 +7,7 @@ class AppTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool obscureText;
   final TextInputType keyboardType;
+  final TextEditingController controller;
 
   const AppTextFormField({
     super.key,
@@ -15,6 +16,8 @@ class AppTextFormField extends StatelessWidget {
     this.validator,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
+
+    required this.controller,
   });
 
   OutlineInputBorder _buildBorder(Color color) {
@@ -27,6 +30,7 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       obscureText: obscureText,
       keyboardType: keyboardType,
       onTapOutside: (_) => FocusScope.of(context).unfocus(),
