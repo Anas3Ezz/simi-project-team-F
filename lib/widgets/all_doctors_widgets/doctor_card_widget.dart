@@ -29,10 +29,10 @@ class DoctorCardWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   DoctorCardHeader(name: doctor.name),
-                  const SizedBox(
+                  SizedBox(
                     child: Text(
                       "Jorem ipsum dolor, consectetur adipiscing elit. Nunc v libero et velit interdum, ac  mattis.",
-                      style: AppTextStyles.bodyText2,
+                      style: AppTextStyles.bodyText.copyWith(fontSize: 10),
                     ),
                   ),
                   DoctorCardFooter(rate: doctor.rate),

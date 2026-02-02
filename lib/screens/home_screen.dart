@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:my_project/constants/app_strings.dart';
 import 'package:my_project/models/doctor_model.dart';
+import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/all_doctors_screen.dart';
 import 'package:my_project/widgets/all_doctors_widgets/doctor_card_widget.dart';
 import 'package:my_project/widgets/search_bar_widget.dart';
@@ -10,7 +13,10 @@ import '../widgets/home_screen_widgets/slider_builder.dart';
 import '../widgets/section_title_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+  final SignInUserModel? user = Hive.box<SignInUserModel>(
+    AppStrings.signInUserBox,
+  ).getAt(0);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,7 @@ class HomeScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const HomeScreenAppBar(),
+              HomeScreenAppBar(user: user),
               const SizedBox(height: 32),
               const SearchBarWidget(),
               const SizedBox(height: 32),

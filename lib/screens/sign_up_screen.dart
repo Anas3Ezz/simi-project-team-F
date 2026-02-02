@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:my_project/root.dart';
-import 'package:my_project/screens/auth_screen.dart';
-import 'package:my_project/theme/app_colors.dart';
-import 'package:my_project/widgets/sub_screens_app_bar.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:my_project/constants/app_strings.dart';
+import 'package:my_project/models/sign_in_user_model.dart';
+import 'package:my_project/screens/navigation_menu.dart';
+import 'package:my_project/screens/sign_in_screen.dart';
+import 'package:my_project/widgets/app_validator_widget.dart';
 
 import '../theme/text_styles.dart';
-import '../widgets/app_text_form_field.dart';
-import '../widgets/primary_button.dart';
-import '../widgets/registration_options_widget.dart';
+import '../widgets/custom_appbar_widget.dart';
+import '../widgets/custom_text_form_widget.dart';
+import '../widgets/primary_button_widget.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -17,81 +19,178 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  var formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
+  AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
+  bool isObscure = true;
+
+  void signIn() async {
+    var myBox = Hive.box<SignInUserModel>(AppStrings.signInUserBox);
+    await myBox.clear();
+    myBox
+        .add(
+          SignInUserModel(
+            email: emailController.text,
+            password: passwordController.text,
+          ),
+        )
+        .then((c) {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => const NavigationMenu()),
+            (route) => false,
+          );
+        })
+        .catchError((error) {
+          print('Error $error');
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: const SubScreensHeader(title: "Create New Account", back: false),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 27),
+      backgroundColor: Colors.white,
+      appBar: const CustomAppBar(title: "Create New Account"),
+      body: SingleChildScrollView(
         child: Form(
           key: formKey,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Full Name", style: AppTextStyles.heading1),
-                const SizedBox(height: 18),
-                const AppTextFormField(hintText: 'Enter Your Name'),
-                const SizedBox(height: 26),
-                const Text("Password", style: AppTextStyles.heading1),
-                const SizedBox(height: 18),
-                const AppTextFormField(
-                  input: TextInputType.visiblePassword,
-                  hintText: 'Enter Your Password',
-                ),
-                const SizedBox(height: 18),
-                const Text("Email", style: AppTextStyles.heading1),
-                const SizedBox(height: 18),
-                const AppTextFormField(
-                  input: TextInputType.emailAddress,
-                  hintText: 'Enter Your Email',
-                ),
-                const SizedBox(height: 18),
-                const Text("Mobile Number", style: AppTextStyles.heading1),
-                const SizedBox(height: 18),
-                const AppTextFormField(
-                  hintText: 'Enter Your Mobile Number',
-                  input: TextInputType.number,
-                ),
-                const SizedBox(height: 18),
-                PrimaryButton(
-                  title: 'Sign Up',
-                  onPressed: () {
-                    if (formKey.currentState?.validate() ?? false) {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (c) => const Root()),
-                        (route) => false,
-                      );
-                    }
-                  },
-                ),
-                const SizedBox(height: 15),
-                const Center(
-                  child: Text(
-                    "OR",
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.grey,
+          autovalidateMode: autoValidateMode,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 27),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 35),
+                  Text("Full Name", style: AppTextStyles.heading1),
+                  SizedBox(height: 18),
+                  AppTextFormField(
+                    validator: AppValidators.validateName,
+                    controller: nameController,
+                    keyboardType: TextInputType.name,
+                    hintText: 'Enter Your Name',
+                  ),
+                  SizedBox(height: 26),
+                  Text("Email", style: AppTextStyles.heading1),
+                  SizedBox(height: 18),
+                  AppTextFormField(
+                    validator: AppValidators.validateEmail,
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    hintText: 'Enter Your Email',
+                  ),
+                  SizedBox(height: 18),
+                  Text("Password", style: AppTextStyles.heading1),
+                  SizedBox(height: 18),
+                  AppTextFormField(
+                    controller: passwordController,
+                    obscureText: isObscure,
+                    hintText: 'Enter Your Password',
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          isObscure = !isObscure;
+                        });
+                      },
+                      icon: Icon(
+                        isObscure ? Icons.visibility_off : Icons.visibility,
+                      ),
+                    ),
+                    validator: AppValidators.validatePassword,
+                  ),
+                  SizedBox(height: 18),
+                  Text("Mobile Number", style: AppTextStyles.heading1),
+                  SizedBox(height: 18),
+                  AppTextFormField(
+                    validator: AppValidators.validatePhone,
+                    controller: phoneController,
+                    keyboardType: TextInputType.phone,
+                    hintText: 'Enter Your Mobile Number',
+                  ),
+                  SizedBox(height: 18),
+                  PrimaryButton(
+                    title: 'Sign Up',
+                    onPressed: () {
+                      if (formKey.currentState?.validate() ?? false) {
+                        signIn();
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 21),
+                  Center(
+                    child: Text(
+                      "OR",
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 19),
-                const RegistrationOptionsWidget(
-                  screen: AuthScreen(),
-                  message: "Do you have an account? ",
-                  option: "Sign In",
-                ),
-              ],
+                  const SizedBox(height: 19),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.white,
+                        child: Image.asset("assets/images/Facebook_Logo.png"),
+                      ),
+                      SizedBox(width: 35),
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.white,
+                        child: Image.asset("assets/images/google_logo.png"),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 38),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Do you have an account? ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignInScreen(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Sign In",
+                          style: AppTextStyles.subTitles.copyWith(fontSize: 18),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 40),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+    phoneController.dispose();
+    super.dispose();
   }
 }
