@@ -44,7 +44,7 @@ class _SignInScreenState extends State<SignInScreen> {
         })
         .catchError((error) {
           if (kDebugMode) {
-            print('Error $error');
+            print('Error  $error');
           }
         });
   }
@@ -66,7 +66,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 const Text("Sign In", style: AppTextStyles.heading1),
                 const SizedBox(height: 10),
                 const Text(
-                  "Welcome to our app please sign in",
+                  "Welcome to our app please sign in ",
                   style: AppTextStyles.bodyText,
                 ),
                 const SizedBox(height: 40),
