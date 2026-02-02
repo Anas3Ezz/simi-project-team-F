@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/models/doctor_model.dart';
 
 import '../../screens/appointment_detailes_screen.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/text_styles.dart';
 
 class DoctorCardFooter extends StatelessWidget {
+  final DoctorModel doctor;
   final double rate;
-  const DoctorCardFooter({super.key, required this.rate});
+  const DoctorCardFooter({super.key, required this.rate, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class DoctorCardFooter extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => AppointmentDetailesScreen(),
+                builder: (context) => AppointmentDetailesScreen(doctor: doctor),
               ),
             );
           },
@@ -31,7 +33,7 @@ class DoctorCardFooter extends StatelessWidget {
         Row(
           children: [
             const Icon(Icons.star, color: AppColors.ratingGold),
-            Text("$rate", style: TextStyle(fontWeight: FontWeight.bold)),
+            Text("$rate", style: const TextStyle(fontWeight: FontWeight.bold)),
           ],
         ),
       ],

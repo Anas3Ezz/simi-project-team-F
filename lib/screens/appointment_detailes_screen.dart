@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/models/doctor_model.dart';
 import 'package:my_project/widgets/appointment_details_screen_widget/appointment_details_screen_header.dart';
 import 'package:my_project/widgets/appointment_details_screen_widget/doctot_info_details.dart';
 import 'package:my_project/widgets/appointment_details_screen_widget/selection_slot_picker.dart';
@@ -7,13 +8,14 @@ import 'package:my_project/widgets/primary_button_widget.dart';
 import 'package:my_project/widgets/section_title_widget.dart';
 
 class AppointmentDetailesScreen extends StatelessWidget {
-  const AppointmentDetailesScreen({super.key});
+  final DoctorModel doctor;
+  const AppointmentDetailesScreen({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: CustomAppBar(title: 'Appointments'),
+      appBar: const CustomAppBar(title: 'Appointments'),
       body: SafeArea(
         child: Column(
           children: [
@@ -25,7 +27,7 @@ class AppointmentDetailesScreen extends StatelessWidget {
                   spacing: 5,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const AppointmentDetailsHeader(),
+                    AppointmentDetailsHeader(doctor: doctor),
                     const SizedBox(height: 25),
                     const DoctorInfoDetails(),
                     const SizedBox(height: 25),

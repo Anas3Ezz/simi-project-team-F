@@ -18,9 +18,7 @@ class AllDoctorsScreen extends StatelessWidget {
           children: [
             const SearchBarWidget(),
             const SizedBox(height: 15),
-            Expanded(
-              child: CustomScrollView(slivers: [const DoctorsListBuilder()]),
-            ),
+            Expanded(child: CustomScrollView(slivers: [DoctorsListBuilder()])),
           ],
         ),
       ),

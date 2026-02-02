@@ -35,7 +35,7 @@ class DoctorCardWidget extends StatelessWidget {
                       style: AppTextStyles.bodyText.copyWith(fontSize: 10),
                     ),
                   ),
-                  DoctorCardFooter(rate: doctor.rate),
+                  DoctorCardFooter(rate: doctor.rate, doctor: doctor),
                 ],
               ),
             ),
