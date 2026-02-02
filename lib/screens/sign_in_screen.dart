@@ -84,7 +84,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   controller: passwordController,
                   obscureText: isObscure,
                   hintText: 'Enter Your Password',
-
                   suffixIcon: IconButton(
                     onPressed: () {
                       setState(() {

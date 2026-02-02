@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/models/sign_in_user_model.dart';
+import 'package:my_project/screens/notification_screen.dart';
 import 'package:my_project/screens/profile_screen.dart';
 import 'package:my_project/theme/app_colors.dart';
 import 'package:my_project/theme/text_styles.dart';
 
-import '../../screens/notification_screen.dart';
-
 class HomeScreenAppBar extends StatelessWidget {
   const HomeScreenAppBar({super.key, this.user});
   final SignInUserModel? user;
+
   String formatDisplayName(String? email) {
-    if (email == null || !email.contains('@')) return "User";
-
-    String namePart = email.split('@')[0];
-
+    String namePart = email!.split('@')[0];
     return namePart[0].toUpperCase() + namePart.substring(1).toLowerCase();
   }
 
