@@ -18,7 +18,7 @@ class AppointmentDetailsHeader extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(16.0),
-            child: Image.asset(doctor.img, width: 90, height: 90),
+            child: Image.asset(doctor.img, width: 120, height: 150),
           ),
           const SizedBox(width: 16),
 
@@ -32,6 +32,7 @@ class AppointmentDetailsHeader extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const SizedBox(height: 20),
                         Text(
                           'Dr.${doctor.name}',
                           style: const TextStyle(
