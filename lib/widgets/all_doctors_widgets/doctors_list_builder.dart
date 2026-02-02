@@ -5,7 +5,7 @@ import 'doctor_card_widget.dart';
 
 class DoctorsListBuilder extends StatelessWidget {
   DoctorsListBuilder({super.key});
-  List<DoctorModel> doctors = [
+  final List<DoctorModel> doctors = [
     const DoctorModel(
       name: "Wanitha",
       img: "assets/images/doctor1.png",
