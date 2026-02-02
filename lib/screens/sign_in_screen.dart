@@ -63,14 +63,14 @@ class _SignInScreenState extends State<SignInScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Sign In", style: AppTextStyles.heading1),
+                const Text("Sign In", style: AppTextStyles.heading1),
                 const SizedBox(height: 10),
-                Text(
+                const Text(
                   "Welcome to our app please sign in",
                   style: AppTextStyles.bodyText,
                 ),
                 const SizedBox(height: 40),
-                Text("Email", style: AppTextStyles.heading1),
+                const Text("Email", style: AppTextStyles.heading1),
                 const SizedBox(height: 18),
                 AppTextFormField(
                   validator: AppValidators.validateEmail,
@@ -78,7 +78,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   hintText: 'Enter Your Email',
                 ),
                 const SizedBox(height: 26),
-                Text("Password", style: AppTextStyles.heading1),
+                const Text("Password", style: AppTextStyles.heading1),
                 const SizedBox(height: 18),
                 AppTextFormField(
                   controller: passwordController,
@@ -163,7 +163,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignUp()),
+                          MaterialPageRoute(
+                            builder: (context) => const SignUp(),
+                          ),
                         );
                       },
                       child: const Text(
