@@ -23,7 +23,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
-            SliverAppBar(
+            const SliverAppBar(
               floating: true,
               backgroundColor: Colors.white,
               title: Text('Message', style: AppTextStyles.screenTitles),
