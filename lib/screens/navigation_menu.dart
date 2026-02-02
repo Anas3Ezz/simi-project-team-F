@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:my_project/constants/app_strings.dart';
+import 'package:my_project/models/doctor_model.dart';
 import 'package:my_project/models/sign_in_user_model.dart';
 import 'package:my_project/screens/appointment_detailes_screen.dart';
 import 'package:my_project/screens/home_screen.dart';
@@ -17,6 +18,12 @@ class NavigationMenu extends StatefulWidget {
 }
 
 class _NavigationMenuState extends State<NavigationMenu> {
+  DoctorModel doctor = const DoctorModel(
+    name: "Mikle",
+    img: "assets/images/doctor3.png",
+    rate: 5,
+    specialist: "specialist",
+  );
   int _selectedIndex = 0;
   final SignInUserModel? user = Hive.box<SignInUserModel>(
     AppStrings.signInUserBox,
@@ -24,7 +31,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
 
   List<Widget> get _screens => [
     HomeScreen(),
-    const AppointmentDetailesScreen(),
+    AppointmentDetailesScreen(doctor: doctor), //Just to fill blank
     const MessagesScreen(),
     ProfileScreen(user: user),
   ];
