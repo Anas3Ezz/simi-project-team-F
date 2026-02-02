@@ -31,7 +31,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
 
   List<Widget> get _screens => [
     HomeScreen(),
-    AppointmentDetailesScreen(doctor: doctor), //Just to fill blank
+    AppointmentDetailesScreen(doctor: doctor), //Just to fill blank.
     const MessagesScreen(),
     ProfileScreen(user: user),
   ];
