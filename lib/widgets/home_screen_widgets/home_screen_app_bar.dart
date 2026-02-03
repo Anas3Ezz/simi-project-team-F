@@ -60,12 +60,14 @@ class HomeScreenAppBar extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => NotificationScreen()),
+              MaterialPageRoute(
+                builder: (context) => const NotificationScreen(),
+              ),
             );
           },
-          child: Stack(
+          child: const Stack(
             children: [
-              const Icon(Icons.notifications_none, size: 30),
+              Icon(Icons.notifications_none, size: 30),
               Positioned(
                 right: 3,
                 child: CircleAvatar(radius: 5, backgroundColor: Colors.red),
