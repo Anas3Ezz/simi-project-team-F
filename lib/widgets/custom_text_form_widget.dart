@@ -39,7 +39,7 @@ class AppTextFormField extends StatelessWidget {
         fillColor: AppColors.textFormFieldColor,
         filled: true,
         suffixIcon: suffixIcon,
-
+        suffixIconColor: AppColors.primaryTeal,
         hintText: hintText,
         enabledBorder: _buildBorder(Colors.grey),
         focusedBorder: _buildBorder(AppColors.primaryTeal),
