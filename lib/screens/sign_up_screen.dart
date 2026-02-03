@@ -65,27 +65,27 @@ class _SignUpState extends State<SignUp> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 35),
-                  Text("Full Name", style: AppTextStyles.heading1),
-                  SizedBox(height: 18),
+                  const SizedBox(height: 35),
+                  const Text("Full Name", style: AppTextStyles.heading1),
+                  const SizedBox(height: 18),
                   AppTextFormField(
                     validator: AppValidators.validateName,
                     controller: nameController,
                     keyboardType: TextInputType.name,
                     hintText: 'Enter Your Name',
                   ),
-                  SizedBox(height: 26),
-                  Text("Email", style: AppTextStyles.heading1),
-                  SizedBox(height: 18),
+                  const SizedBox(height: 26),
+                  const Text("Email", style: AppTextStyles.heading1),
+                  const SizedBox(height: 18),
                   AppTextFormField(
                     validator: AppValidators.validateEmail,
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     hintText: 'Enter Your Email',
                   ),
-                  SizedBox(height: 18),
-                  Text("Password", style: AppTextStyles.heading1),
-                  SizedBox(height: 18),
+                  const SizedBox(height: 18),
+                  const Text("Password", style: AppTextStyles.heading1),
+                  const SizedBox(height: 18),
                   AppTextFormField(
                     controller: passwordController,
                     obscureText: isObscure,
@@ -102,16 +102,16 @@ class _SignUpState extends State<SignUp> {
                     ),
                     validator: AppValidators.validatePassword,
                   ),
-                  SizedBox(height: 18),
-                  Text("Mobile Number", style: AppTextStyles.heading1),
-                  SizedBox(height: 18),
+                  const SizedBox(height: 18),
+                  const Text("Mobile Number", style: AppTextStyles.heading1),
+                  const SizedBox(height: 18),
                   AppTextFormField(
                     validator: AppValidators.validatePhone,
                     controller: phoneController,
                     keyboardType: TextInputType.phone,
                     hintText: 'Enter Your Mobile Number',
                   ),
-                  SizedBox(height: 18),
+                  const SizedBox(height: 18),
                   PrimaryButton(
                     title: 'Sign Up',
                     onPressed: () {
@@ -121,7 +121,7 @@ class _SignUpState extends State<SignUp> {
                     },
                   ),
                   const SizedBox(height: 21),
-                  Center(
+                  const Center(
                     child: Text(
                       "OR",
                       style: TextStyle(
@@ -140,7 +140,7 @@ class _SignUpState extends State<SignUp> {
                         backgroundColor: Colors.white,
                         child: Image.asset("assets/images/Facebook_Logo.png"),
                       ),
-                      SizedBox(width: 35),
+                      const SizedBox(width: 35),
                       CircleAvatar(
                         radius: 30,
                         backgroundColor: Colors.white,
@@ -152,7 +152,7 @@ class _SignUpState extends State<SignUp> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Do you have an account? ",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -164,7 +164,7 @@ class _SignUpState extends State<SignUp> {
                           Navigator.pop(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SignInScreen(),
+                              builder: (context) => const SignInScreen(),
                             ),
                           );
                         },
@@ -175,7 +175,7 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                 ],
               ),
             ),

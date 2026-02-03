@@ -31,8 +31,8 @@ class NotificationTile extends StatelessWidget {
                     fontWeight: isRead ? FontWeight.normal : FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 5),
-                Text(
+                const SizedBox(height: 5),
+                const Text(
                   "Lorem ipsum dolor sit amet, adipiscing elit.",
                   style: AppTextStyles.bodyText,
                 ),

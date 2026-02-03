@@ -28,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Text("Profile", style: AppTextStyles.screenTitles),
+        title: const Text("Profile", style: AppTextStyles.screenTitles),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -48,12 +48,21 @@ class ProfileScreen extends StatelessWidget {
             Text(displayName, style: AppTextStyles.heading2),
             const SizedBox(height: 30),
             // Menu Items
-            ProfileTile(icon: Icons.history, title: "History"),
-            ProfileTile(icon: Icons.person_outline, title: "Personal Details"),
-            ProfileTile(icon: Icons.location_on_outlined, title: "Location"),
-            ProfileTile(icon: Icons.payment_outlined, title: "Payment Method"),
-            ProfileTile(icon: Icons.settings_outlined, title: "Settings"),
-            ProfileTile(icon: Icons.help_outline, title: "Help"),
+            const ProfileTile(icon: Icons.history, title: "History"),
+            const ProfileTile(
+              icon: Icons.person_outline,
+              title: "Personal Details",
+            ),
+            const ProfileTile(
+              icon: Icons.location_on_outlined,
+              title: "Location",
+            ),
+            const ProfileTile(
+              icon: Icons.payment_outlined,
+              title: "Payment Method",
+            ),
+            const ProfileTile(icon: Icons.settings_outlined, title: "Settings"),
+            const ProfileTile(icon: Icons.help_outline, title: "Help"),
             ProfileTile(
               icon: Icons.logout,
               title: "Logout",
@@ -64,7 +73,9 @@ class ProfileScreen extends StatelessWidget {
                     .then((c) {
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => SignInScreen()),
+                        MaterialPageRoute(
+                          builder: (context) => const SignInScreen(),
+                        ),
                         (route) => false,
                       );
                     })
