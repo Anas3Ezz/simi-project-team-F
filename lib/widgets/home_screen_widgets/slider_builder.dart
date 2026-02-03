@@ -35,9 +35,7 @@ class _SliderBuilderState extends State<SliderBuilder> {
               });
             },
           ),
-          items: items.map((i) {
-            return i;
-          }).toList(),
+          items: items,
         ),
         const SizedBox(height: 20),
         Row(
